@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import Navigation from "./Navigation/Navigation";
+import Products from "./Products/Products";
+import Recommended from "./Recommended/Recommended";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <>
+      <Navigation />
+      <Products />
+      <Recommended />
+    </>
+  );
+};
 
-export default App
+export default App;
