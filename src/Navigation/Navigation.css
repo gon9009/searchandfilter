@@ -6,6 +6,7 @@ nav {
   align-items: center;
   padding: 20px;
   z-index: 9999;
+  margin-left: 2rem;
 }
 
 /* 나중에 리팩토링 */

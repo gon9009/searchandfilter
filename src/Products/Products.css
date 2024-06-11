@@ -1,3 +1,4 @@
+/* 컨테이너안의 아이템이 넘칠때 wrap 적용  */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +39,7 @@
 
 .card-price {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
