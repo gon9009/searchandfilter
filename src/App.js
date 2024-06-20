@@ -2,27 +2,26 @@ import React, { useState } from "react";
 import Navigation from "./Navigation/Navigation";
 import Products from "./Products/Products";
 import Recommended from "./Recommended/Recommended";
-import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
 import products from "./data/products";
-
-// 상태가 변하면 => 리액트 원리 재실행
+// =======================================
+import Header from "./components/Header/Header";
+import Main from './components/Main/Main'
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [query, setQuery] = useState("");
 
-  // 입력 필터링(Nav 영역 상품 검색)
+  // ======== 제품 검색 =================
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
 
-  // 사이드바 버튼
+  // ======== 카테고리 버튼 ==================
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };
 
-  // 추천 영역 버튼
   const handleClick = (e) => {
     setSelectedCategory(e.target.value);
   };
@@ -61,13 +60,14 @@ const App = () => {
       )
     );
   }
+
+  // 검색/필터링 결과
   const result = filteredData(products, selectedCategory, query);
 
   return (
     <>
-      <Sidebar handleChange={handleChange} />
-      <Navigation query={query} handleInputChange={handleInputChange} />
-      <Recommended handleClick={handleClick} />
+      <Header />
+      <Main />
       <Products result={result} />
     </>
   );

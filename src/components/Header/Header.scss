@@ -1,0 +1,27 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 100px;
+  background: white;
+
+  border-bottom: 1.5px solid black;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  .title {
+    color: white;
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(255, 0, 138, 1) 0%,
+      rgba(0, 185, 255, 1) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

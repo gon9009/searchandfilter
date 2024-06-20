@@ -2,14 +2,12 @@ nav {
   display: flex;
   border-bottom: 2px solid #f3f3f3;
   justify-content: space-around;
-  /* 교차축 */
   align-items: center;
   padding: 20px;
-  z-index: 9999;
+  z-index: -1;
   margin-left: 2rem;
 }
 
-/* 나중에 리팩토링 */
 input {
   padding: 12px 20px;
   border: none;
@@ -18,11 +16,11 @@ input {
   margin-right: 20px;
   border-radius: 5px;
   position: relative;
-  width: 14em;
+  width: 14rem;
 }
 
 .nav-icons {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-left: 2rem;
 }

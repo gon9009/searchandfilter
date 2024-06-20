@@ -1,29 +1,33 @@
-import React from "react";
-import "./Navigation.css";
 import { FiHeart } from "react-icons/fi";
 import { AiOutlineShoppingCart, AiOutlineUserAdd } from "react-icons/ai";
+import "./Navigation.css";
 
-function Navigation() {
+const Nav = ({ handleInputChange, query }) => {
   return (
     <nav>
       <div className="nav-container">
-        <input type="text" className="search-input" placeholder="상품 검색" />
+        <input
+          className="search-input"
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          placeholder="Enter your search shoes."
+        />
       </div>
-
+      {/* 네비바 버튼 */}
       <div className="profile-container">
-        {/* 라우터 링크로 교체 */}
-        <a href="#">
+        <a href="#!">
           <FiHeart className="nav-icons" />
         </a>
-        <a href="#">
+        <a href="#!">
           <AiOutlineShoppingCart className="nav-icons" />
         </a>
-        <a href="#">
+        <a href="#!">
           <AiOutlineUserAdd className="nav-icons" />
         </a>
       </div>
     </nav>
   );
-}
+};
 
-export default Navigation;
+export default Nav;

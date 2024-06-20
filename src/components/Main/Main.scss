@@ -1,0 +1,11 @@
+// 메인 컨테이너 (사이드바 + 이모지 리스트)
+.main-container {
+  border: 2px solid red;
+  margin: 0 auto;
+  min-width: 1500px;
+  max-width: 1500px;
+  padding-top: 100px; /* 헤더의 높이만큼 패딩 추가 */
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-gap: 10px;
+}
