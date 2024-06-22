@@ -1,8 +1,10 @@
+@import "../../Styles/variables";
+
 .sidebar-container {
   grid-column: 2fr;
   background-color: white;
-  border-right: 2px solid #e5e5e5;
-  border-left: 2px solid #e5e5e5;
+  border-right: $line-color;
+  border-left: $line-color;
   padding: 20px;
   display: flex;
   flex-direction: column;
