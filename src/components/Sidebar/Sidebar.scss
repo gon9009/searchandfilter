@@ -1,5 +1,14 @@
-aside {
+.sidebar-container {
   grid-column: 2fr;
-  border-right: 1px solid black;
-  padding-bottom: 1000px;
+  background-color: white;
+  border-right: 2px solid #e5e5e5;
+  border-left: 2px solid #e5e5e5;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .sidebar-name {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 }

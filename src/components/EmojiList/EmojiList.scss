@@ -1,4 +1,9 @@
 .emoji-list-container {
   grid-column: 4fr;
-  background-color: red;
+  width: 90%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  overflow-y: scroll;
+
 }

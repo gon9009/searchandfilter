@@ -4,9 +4,9 @@ import "./EmojiList.scss";
 
 function EmojiList() {
   return (
-    <div className="emoji-list-container">
+    <section className="emoji-list-container">
       <EmojiCard />
-    </div>
+    </section>
   );
 }
 
