@@ -2,10 +2,12 @@ import React from "react";
 import EmojiCard from "../EmojiCard/EmojiCard";
 import "./EmojiList.scss";
 
-function EmojiList() {
+function EmojiList({ filteredData }) {
   return (
     <section className="emoji-list-container">
-      <EmojiCard />
+      {filteredData.map((emoji) => (
+        <EmojiCard key={emoji.name} emoji={emoji} />
+      ))}
     </section>
   );
 }

@@ -2,15 +2,17 @@ import React from "react";
 // =======================================
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+import useFetchEmoji from "./Hooks/useFetchEmoji";
 import { useState } from "react";
 
 const App = () => {
+  const { data, error, isLoading } = useFetchEmoji();
 
-  // 검색/필터링 결과
+
   return (
     <>
       <Header />
-      <Main />
+      <Main data={data} error={error} isLoading={isLoading} />
     </>
   );
 };
