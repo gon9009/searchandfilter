@@ -6,7 +6,7 @@ function EmojiList({ filteredData }) {
   return (
     <section className="emoji-list-container">
       {filteredData.map((emoji) => (
-        <EmojiCard key={emoji.name} emoji={emoji} />
+        <EmojiCard key={`${emoji.name}-${emoji.category}`} emoji={emoji} />
       ))}
     </section>
   );
