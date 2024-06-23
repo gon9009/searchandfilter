@@ -1,3 +1,5 @@
+@import '../../Styles/variables';
+
 // 메인 컨테이너 (사이드바 + 이모지 리스트)
 .main-container {
   margin: 0 auto;
@@ -11,12 +13,11 @@
 }
 
 .emoji-section {
-  padding: 20px;
   border-right: 2px solid #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
+  background: $color-grey;
   height: 100%;
   overflow-y: hidden;
 }

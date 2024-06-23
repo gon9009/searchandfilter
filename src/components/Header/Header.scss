@@ -6,9 +6,8 @@ header {
   align-items: center;
   margin: 0 auto;
   height: 100px;
-  background: white;
-
-  border-bottom: 2px solid #e5e5e5;
+  background:$color-grey;
+  border-bottom:$line-color;
   position: fixed;
   top: 0;
   right: 0;

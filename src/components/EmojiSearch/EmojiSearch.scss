@@ -1,13 +1,36 @@
+@import "../../Styles/variables";
+
 .emoji-search-container {
-  width: 90%;
-  text-align: center;
+  border-bottom: $line-color;
+  width: 100%;
   grid-row: 5fr;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
-  input {
+  .search-wrapper {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background-color: #e5e5e5;
     padding: 10px;
-    border-radius: 5px;
-    outline: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    // 돋보기 아이콘
+    .search-icon {
+      margin-right: 10px; // 아이콘과 인풋 사이 간격 조정
+      margin-left: 10px;
+      font-size: 1.2rem;
+    }
+
+    input[type="text"] {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      padding: 6px;
+      width: 100%;
+      background-color: #e5e5e5;
+    }
   }
 }

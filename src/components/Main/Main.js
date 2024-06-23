@@ -4,13 +4,13 @@ import EmojiList from "../EmojiList/EmojiList";
 import "./Main.scss";
 import EmojiSearch from "../EmojiSearch/EmojiSearch";
 
-function Main() {
+function Main({filteredData}) {
   return (
     <main className="main-container">
       <Sidebar />
       <div className="emoji-section">
-        <EmojiSearch />
-        <EmojiList />
+        <EmojiSearch  />
+        <EmojiList filteredData={filteredData}/>
       </div>
     </main>
   );
