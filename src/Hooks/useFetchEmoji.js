@@ -1,13 +1,12 @@
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { getEmoji } from "../API/api";
 
-const API_URL = "https://emojihub.yurace.pro/api/all";
 
-function useFetchEmoji() {
+function useFetchEmoji(page = 1) {
   const { data, error, isLoading } = useQuery({
-    queryKey: ["emojis"],
-    queryFn: () => axios.get(API_URL).then((res) => res.data),
-  });
+    queryKey: ["emojis", page],
+    queryFn: () => getEmoji(page)
+   });
 
   return { data, error, isLoading };
 }

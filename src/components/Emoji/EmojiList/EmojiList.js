@@ -9,6 +9,8 @@ function EmojiList({ filteredData }) {
       {filteredData.map((emoji) => (
         <EmojiCard key={`${emoji.name}-${emoji.category}`} emoji={emoji} />
       ))}
+
+      <button>Prev</button>
     </section>
   );
 }
