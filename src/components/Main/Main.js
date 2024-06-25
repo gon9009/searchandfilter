@@ -1,5 +1,5 @@
 import React from "react";
-import EmojiContainer from "../EmojiContainer/EmojiContainer";
+import EmojiContainer from "../Emoji/EmojiContainer/EmojiContainer";
 import useFetchEmoji from "../../Hooks/useFetchEmoji";
 import { useState, useEffect } from "react";
 import "./Main.scss";

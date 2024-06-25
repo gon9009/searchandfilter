@@ -1,6 +1,6 @@
 import React from "react";
-import EmojiList from "../EmojiList/EmojiList";
 import EmojiSearch from "../EmojiSearch/EmojiSearch";
+import EmojiList from "../EmojiList/EmojiList";
 import "./EmojiContainer.scss"; // 스타일 파일 임포트
 
 function EmojiContainer({ setSearch, filteredData }) {
