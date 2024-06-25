@@ -5,7 +5,6 @@ function SubMenu({ data }) {
   const [subNav, setSubNav] = useState(false);
   const showSubNav = () => setSubNav(!subNav);
 
-  // button>p>div
   return (
     <>
       <div className="sidebar-category">

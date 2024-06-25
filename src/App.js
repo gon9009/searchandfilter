@@ -1,19 +1,18 @@
 import React from "react";
 // =======================================
-import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./components/Main/Main";
-import useFetchEmoji from "./Hooks/useFetchEmoji";
-import { useState } from "react";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
-  const { data, error, isLoading } = useFetchEmoji();
-
-
   return (
-    <>
-      <Header />
-      <Main data={data} error={error} isLoading={isLoading} />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 };
 

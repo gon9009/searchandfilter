@@ -1,6 +1,7 @@
 import React from "react";
 import { decode } from "html-entities";
 import "./EmojiCard.scss";
+import { CiHeart } from "react-icons/ci";
 
 function EmojiCard({ emoji }) {
   const { name, htmlCode } = emoji;
@@ -10,6 +11,7 @@ function EmojiCard({ emoji }) {
     <div className="emoji-background">
       <div className="item">
         <div style={{ fontSize: "3rem" }}>{emojiString}</div>
+        <CiHeart />
       </div>
     </div>
   );

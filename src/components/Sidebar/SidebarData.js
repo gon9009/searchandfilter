@@ -44,4 +44,4 @@ export const SidebarData = [
   },
 ];
 
-export default SidebarData; // 이 부분을 확인합니다.
+export default SidebarData;
