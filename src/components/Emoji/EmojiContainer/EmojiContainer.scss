@@ -4,9 +4,9 @@
 .emoji-container {
   background-color: $color-grey;
   border-right: $line-color;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 7fr 1fr ;
   align-items: center;
-  height: 100%;
+  justify-items: center;
   overflow-y: hidden;
 }

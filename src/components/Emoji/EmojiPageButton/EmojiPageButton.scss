@@ -1,0 +1,17 @@
+.page-button-container {
+  width: 50%;
+  grid-row: 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  button {
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

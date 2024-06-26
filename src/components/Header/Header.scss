@@ -1,21 +1,25 @@
-@import '../../Styles/variables';
+@import "../../Styles/variables";
 
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  height: 100px;
-  background:$color-grey;
-  border-bottom:$line-color;
+  height: 80px;
+  background: $color-grey;
+  border-bottom: $line-color;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 999;
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .title {
     color: white;
-    font-size: 3rem;
+    font-size: 2.8rem;
     letter-spacing: 0.3rem;
     background: linear-gradient(
       90deg,

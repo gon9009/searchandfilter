@@ -23,9 +23,9 @@ function Main() {
     }
   }, [search, data]);
 
-
+  // 검색어 
   useEffect(() => {
-
+    
   },[])
 
   if (isLoading) {
