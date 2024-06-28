@@ -1,5 +1,7 @@
 @import "./variables.scss";
-.button-style {
+
+// 사이드바 버튼
+.button-style-sidebar {
   background-color: $color-grey;
   font-size: 1.2rem;
   padding: 8px;
@@ -8,8 +10,23 @@
   justify-content: space-between;
   width: 100%;
   cursor: pointer;
-  font-family: "Libre Franklin", sans-serif; // 폰트 스타일 추가
+  font-family: "Libre Franklin", sans-serif;
   &:hover {
     background-color: #f0f0f0;
   }
+  transition: all 0.3s ease;
+}
+
+// 컨텐츠 버튼
+.button-style-content {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid transparent;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  transition: all 0.3s ease;
 }

@@ -1,3 +1,6 @@
+@import "../../../Styles/variables";
+@import "../../../Styles/button.scss";
+
 .filter-button-container {
   width: 90%;
   grid-row: 1fr;
@@ -6,10 +9,7 @@
   justify-content: center;
 
   button {
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    @extend .button-style-content;
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -19,7 +19,6 @@
       margin-left: 10px;
     }
     &:hover {
-      
     }
   }
 }
