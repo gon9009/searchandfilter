@@ -10,11 +10,16 @@ function EmojiContainer({
   filteredData,
   setSearch,
   setPage,
+  copyToClipboard,
 }) {
   return (
     <div className="emoji-container">
       <EmojiFilter />
-      <EmojiList filteredData={filteredData} setSearch={setSearch} />
+      <EmojiList
+        copyToClipboard={copyToClipboard}
+        filteredData={filteredData}
+        setSearch={setSearch}
+      />
       <EmojiPageButton
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}

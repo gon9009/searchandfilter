@@ -21,3 +21,33 @@
     cursor: pointer;
   }
 }
+
+// 이모지 복사시 툴팁
+.copy-message {
+  z-index: 999;
+  position: absolute;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  white-space: nowrap;
+  animation: fadeOut 1.5s ease-out forwards;
+}
+
+// 애니메이션
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

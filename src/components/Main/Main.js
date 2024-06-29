@@ -1,6 +1,7 @@
 import React from "react";
 import EmojiContainer from "../Emoji/EmojiContainer/EmojiContainer";
 import useFetchEmoji from "../../Hooks/useFetchEmoji";
+import useClipBoard from "../../Hooks/useClipBoard";
 import { useState, useEffect } from "react";
 import "./Main.scss";
 
@@ -11,6 +12,7 @@ function Main() {
   const [filteredData, setFilteredData] = useState([]);
   const { data, error, isLoading } = useFetchEmoji();
   const [page, setPage] = useState(1);
+  const { copyToClipboard } = useClipBoard();
 
   // 이모지 검색
   useEffect(() => {
@@ -41,6 +43,7 @@ function Main() {
   const hanldePrevPage = () => {
     setPage(page > 1 ? page - 1 : 1);
   };
+
   return (
     <>
       <EmojiContainer
@@ -49,6 +52,7 @@ function Main() {
         filteredData={filteredData}
         handleNextPage={handleNextPage}
         handlePrevPage={hanldePrevPage}
+        copyToClipboard={copyToClipboard}
       />
     </>
   );
