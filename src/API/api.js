@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const API_URL = "https://emojihub.yurace.pro/api/all";
 
-export async function getEmoji(page = 1) {
+export async function getEmoji() {
     try {
         const response = await axios.get(API_URL);
         return response.data;

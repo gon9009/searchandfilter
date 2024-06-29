@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { getEmoji } from "../API/api";
 
-function useFetchEmoji(page = 1) {
+function useFetchEmoji() {
   const { data, error, isLoading } = useQuery({
-    queryKey: ["emojis", page],
-    queryFn: () => getEmoji(page)
+    queryKey: ["emojis"],
+    queryFn: () => getEmoji()
    });
 
   return { data, error, isLoading };

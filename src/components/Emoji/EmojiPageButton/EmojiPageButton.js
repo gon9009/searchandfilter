@@ -4,13 +4,13 @@ import "./EmojiPageButton.scss";
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
 
-function EmojiPageButton() {
+function EmojiPageButton({ handleNextPage, handlePrevPage }) {
   return (
     <div className="page-button-container">
-      <button>
+      <button onClick={handlePrevPage}>
         <FaArrowLeft />
       </button>
-      <button>
+      <button onClick={handleNextPage}>
         <FaArrowRight />
       </button>
     </div>
