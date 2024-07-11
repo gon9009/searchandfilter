@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./SubMenu.scss";
+import { useNavigate } from "react-router";
 
 function SubMenu({ data }) {
   const [subNav, setSubNav] = useState(false);
   const showSubNav = () => setSubNav(!subNav);
+  const navigate = useNavigate();
 
   return (
     <>

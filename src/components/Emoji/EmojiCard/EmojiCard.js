@@ -3,7 +3,7 @@ import { decode } from "html-entities";
 import "./EmojiCard.scss";
 import { CiHeart } from "react-icons/ci";
 import { IoHeart } from "react-icons/io5";
-
+// 개별 이모지 
 function EmojiCard({ emoji, copyToClipboard }) {
   const [like, setLike] = useState(false);
   const [copy, setCopy] = useState(false);

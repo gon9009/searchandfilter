@@ -3,10 +3,10 @@ import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { Outlet } from "react-router";
 
-function Layout() {
+function Layout({setSearch}) {
   return (
     <>
-      <Header />
+      <Header setSearch={setSearch}/>
       <main className="main-container">
         <Sidebar />
         <Outlet />

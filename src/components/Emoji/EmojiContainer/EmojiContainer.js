@@ -1,8 +1,8 @@
 import React from "react";
 import EmojiList from "../EmojiList/EmojiList";
 import "./EmojiContainer.scss";
-import EmojiPageButton from "../EmojiPageButton/EmojiPageButton";
 import EmojiFilter from "../EmojiFilter/EmojiFilter";
+import PaginationContainer from "../Pagination/PaginationContainer";
 
 function EmojiContainer({
   handleNextPage,
@@ -11,6 +11,8 @@ function EmojiContainer({
   setSearch,
   setPage,
   copyToClipboard,
+  totalPages,
+  page,
 }) {
   return (
     <div className="emoji-container">
@@ -20,10 +22,12 @@ function EmojiContainer({
         filteredData={filteredData}
         setSearch={setSearch}
       />
-      <EmojiPageButton
+      <PaginationContainer
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         setPage={setPage}
+        totalPages={totalPages}
+        page={page}
       />
     </div>
   );
