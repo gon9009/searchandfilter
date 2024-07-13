@@ -3,6 +3,7 @@ import "./EmojiSearch.scss";
 import { FaSearch } from "react-icons/fa";
 
 function EmojiSearch({setSearch}) {
+  
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };

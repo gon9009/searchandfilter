@@ -6,8 +6,7 @@ import Layout from "./components/Layout/Layout";
 import { useState } from "react";
 
 const App = () => {
-  // Main/Header 가 이 상태를 공유해야함
-  // 중앙상태 관리
+  // Main/Header Search 상태를 공유하기 위해 
   const [search, setSearch] = useState("");
 
   return (

@@ -2,24 +2,28 @@ import React from "react";
 import EmojiContainer from "../Emoji/EmojiContainer/EmojiContainer";
 import useFetchEmoji from "../../Hooks/useFetchEmoji";
 import useClipBoard from "../../Hooks/useClipBoard";
+import useDebounce from "../../Hooks/useDebounce";
+import Loading from "../Common/Loading";
 import { useState, useEffect } from "react";
 import "./Main.scss";
 
 const LIMIT = 30;
+const DELAY = 300;
 
 function Main({ search, setSearch }) {
   const [filteredData, setFilteredData] = useState([]);
   const { data, error, isLoading } = useFetchEmoji();
   const [page, setPage] = useState(1);
   const { copyToClipboard } = useClipBoard();
+  const debouncedSearch = useDebounce(search, DELAY);
 
   // 데이터 필터링
   useEffect(() => {
     // 데이터 오류 방지
     if (data && data.length > 0) {
-      if (search !== "") {
+      if (debouncedSearch !== "") {
         const filtered = data.filter((emoji) =>
-          emoji.name.toLowerCase().includes(search.toLowerCase())
+          emoji.name.toLowerCase().includes(debouncedSearch.toLowerCase())
         );
         const start = (page - 1) * LIMIT;
         const paginatedData = filtered.slice(start, start + LIMIT);
@@ -30,11 +34,7 @@ function Main({ search, setSearch }) {
         setFilteredData(data.slice(start, end));
       }
     }
-  }, [search, data, page]);
-
-  // 페이지네이션
-  if (isLoading) return <h2>로딩중 . . . </h2>;
-  if (error) return <h2>에러 발생!</h2>;
+  }, [debouncedSearch, data, page]);
 
   const handleNextPage = () => {
     setPage(page + 1);
@@ -44,8 +44,15 @@ function Main({ search, setSearch }) {
     setPage(page > 1 ? page - 1 : 1);
   };
 
-  // 전체 페이지
-  const totalPages = Math.ceil(data.length / LIMIT);
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>데이터 패칭 오류! </div>;
+  }
+  // 전체 페이지(전체 페이지/ 데이터)
+  const totalPages = data ? Math.ceil(data.length / LIMIT) : 0;
 
   return (
     <>

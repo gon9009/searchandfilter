@@ -9,13 +9,14 @@ function SubMenu({ data }) {
 
   return (
     <>
+    {/* 카테고리 메뉴 */}
       <div className="sidebar-category">
         <button onClick={showSubNav}>
           <p className="category-name"> {data.categoryName}</p>
           <div>{subNav ? data.iconClosed : data.iconOpened}</div>
         </button>
       </div>
-
+    {/* 서브 메뉴 */}
       <div className="category-submenu">
         {subNav &&
           data.subCategory.map((sub) => {
