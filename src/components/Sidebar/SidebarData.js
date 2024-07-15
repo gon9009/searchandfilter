@@ -1,6 +1,7 @@
 import React from "react";
 import * as RiIcons from "react-icons/ri";
 
+
 export const SidebarData = [
   {
     categoryName: "Category",
@@ -40,8 +41,12 @@ export const SidebarData = [
         title: "Flags",
         emoji: "🚩",
       },
-    ],
+    ],    
   },
+  {
+    categoryName:"Liked ❤️",
+    categoryId: "1",
+  }
 ];
 
 export default SidebarData;

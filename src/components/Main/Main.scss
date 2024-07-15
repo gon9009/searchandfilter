@@ -1,6 +1,6 @@
 @import "../../Styles/variables";
 
-// 메인 컨테이너 (이모지 리스트)
+// 메인 컨테이너 (이모지 컨테이너 + 사이드 바)
 .main-container {
   display: grid;
   grid-template-columns: 3fr 7fr;
@@ -10,3 +10,6 @@
   padding-top: 80px; /* 헤더의 높이만큼 패딩 추가 */
   height: 1000px;
 }
+
+// 사이드바 3fr 
+// 컨테이너 7fr 

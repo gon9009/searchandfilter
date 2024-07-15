@@ -9,14 +9,13 @@ function PageButton({ direction, handleClick, page, totalPages }) {
   const isFirstPage = page === 1;
   const isLastPage = page === totalPages;
   return (
-    <div className="page-button-container">
-      <button
-        disabled={direction === "prev" ? isFirstPage : isLastPage}
-        onClick={handleClick}
-      >
-        {direction === "prev" ? <FaArrowLeft /> : <FaArrowRight />}
-      </button>
-    </div>
+    <button
+      className="btn-pagination"
+      disabled={direction === "prev" ? isFirstPage : isLastPage}
+      onClick={handleClick}
+    >
+      {direction === "prev" ? <FaArrowLeft /> : <FaArrowRight />}
+    </button>
   );
 }
 

@@ -3,11 +3,9 @@ import "./Pagination.scss";
 
 function Pagination({ page, totalPages }) {
   return (
-    <section className="pagination">
-      <div>
-        {page}/{totalPages}
-      </div>
-    </section>
+    <div className="pagination">
+      {page}/{totalPages}
+    </div>
   );
 }
 

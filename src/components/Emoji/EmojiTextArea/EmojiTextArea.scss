@@ -1,0 +1,17 @@
+@import "../../../Styles/variables";
+
+.text-area-container {
+  width: 90%;
+  // 컨테이너
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  textarea {
+    border: $line-color;
+    resize: none;
+    width: 100%;
+    height: 100%;
+  }
+}

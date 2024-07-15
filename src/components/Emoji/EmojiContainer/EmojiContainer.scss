@@ -6,6 +6,7 @@
   border-right: $line-color;
   display: grid;
   grid-template-rows: 1fr 7fr 1fr;
+  // 모든 아이템 수직/수평 정렬
   align-items: center;
   justify-items: center;
   overflow-y: hidden;

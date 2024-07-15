@@ -51,9 +51,8 @@ function Main({ search, setSearch }) {
   if (error) {
     return <div>데이터 패칭 오류! </div>;
   }
-  // 전체 페이지(전체 페이지/ 데이터)
+  
   const totalPages = data ? Math.ceil(data.length / LIMIT) : 0;
-
   return (
     <>
       <EmojiContainer

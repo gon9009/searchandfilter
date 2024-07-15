@@ -1,20 +1,13 @@
-.page-button-container {
-  width: 50%;
-  grid-row: 1fr;
+.btn-pagination {
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  button {
-    padding: 15px;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  justify-content: center;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

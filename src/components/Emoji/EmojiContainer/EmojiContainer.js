@@ -1,8 +1,8 @@
 import React from "react";
 import EmojiList from "../EmojiList/EmojiList";
 import "./EmojiContainer.scss";
-import EmojiFilter from "../EmojiFilter/EmojiFilter";
 import PaginationContainer from "../Pagination/PaginationContainer";
+import EmojiTextArea from "../EmojiTextArea/EmojiTextArea";
 
 function EmojiContainer({
   handleNextPage,
@@ -16,7 +16,7 @@ function EmojiContainer({
 }) {
   return (
     <div className="emoji-container">
-      <EmojiFilter />
+      <EmojiTextArea />
       <EmojiList
         copyToClipboard={copyToClipboard}
         filteredData={filteredData}

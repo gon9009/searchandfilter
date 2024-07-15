@@ -11,7 +11,7 @@ function PaginationContainer({
   handlePrevPage,
 }) {
   return (
-    <div className="pagination-container">
+    <section className="pagination-container">
       <PageButton
         page={page}
         totalPages={totalPages}
@@ -25,7 +25,7 @@ function PaginationContainer({
         direction="next"
         handleClick={handleNextPage}
       />
-    </div>
+    </section>
   );
 }
 
