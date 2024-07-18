@@ -3,16 +3,22 @@ import { decode } from "html-entities";
 import "./EmojiCard.scss";
 import { CiHeart } from "react-icons/ci";
 import { IoHeart } from "react-icons/io5";
-// 개별 이모지 
-function EmojiCard({ emoji, copyToClipboard }) {
-  const [like, setLike] = useState(false);
+
+// 개별 이모지
+function EmojiCard({ emoji, copyToClipboard, likedEmojis, setLikedEmojis }) {
   const [copy, setCopy] = useState(false);
   const { name, htmlCode, category, group } = emoji;
   const emojiString = decode(htmlCode[0]);
 
-  // 좋아요 상태 저장
-  const handleClick = () => {
-    setLike(!like);
+  const isLiked = likedEmojis.some((e) => e.name === emoji.name);
+
+  const handleClick = (event) => {
+    event.stopPropagation();
+    if (isLiked) {
+      setLikedEmojis(likedEmojis.filter((e) => e.name !== emoji.name));
+    } else {
+      setLikedEmojis([...likedEmojis, emoji]);
+    }
   };
 
   const handleCopyToClipboard = () => {
@@ -29,7 +35,7 @@ function EmojiCard({ emoji, copyToClipboard }) {
       <div className="emoji-item">
         <div style={{ fontSize: "3rem" }}>{emojiString}</div>
         <div className="like-btn" onClick={handleClick}>
-          {like ? <IoHeart style={{ color: "red" }} /> : <CiHeart />}
+          {isLiked ? <IoHeart style={{ color: "red" }} /> : <CiHeart />}
         </div>
       </div>
       {copy && <p className="copy-message">복사완료!</p>}

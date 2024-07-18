@@ -13,6 +13,8 @@ function EmojiContainer({
   copyToClipboard,
   totalPages,
   page,
+  likedEmojis,
+  setLikedEmojis,
 }) {
   return (
     <div className="emoji-container">
@@ -21,6 +23,8 @@ function EmojiContainer({
         copyToClipboard={copyToClipboard}
         filteredData={filteredData}
         setSearch={setSearch}
+        likedEmojis={likedEmojis}
+        setLikedEmojis={setLikedEmojis}
       />
       <PaginationContainer
         handleNextPage={handleNextPage}

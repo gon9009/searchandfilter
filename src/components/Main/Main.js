@@ -10,7 +10,7 @@ import "./Main.scss";
 const LIMIT = 30;
 const DELAY = 300;
 
-function Main({ search, setSearch }) {
+function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const [filteredData, setFilteredData] = useState([]);
   const { data, error, isLoading } = useFetchEmoji();
   const [page, setPage] = useState(1);
@@ -51,8 +51,9 @@ function Main({ search, setSearch }) {
   if (error) {
     return <div>데이터 패칭 오류! </div>;
   }
-  
+
   const totalPages = data ? Math.ceil(data.length / LIMIT) : 0;
+
   return (
     <>
       <EmojiContainer
@@ -64,6 +65,8 @@ function Main({ search, setSearch }) {
         handleNextPage={handleNextPage}
         handlePrevPage={hanldePrevPage}
         copyToClipboard={copyToClipboard}
+        likedEmojis={likedEmojis}
+        setLikedEmojis={setLikedEmojis}
       />
     </>
   );
