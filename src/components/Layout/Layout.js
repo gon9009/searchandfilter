@@ -3,12 +3,12 @@ import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import { Outlet } from "react-router";
 
-function Layout({ setSearch, likedEmojis }) {
+function Layout({ setSearch }) {
   return (
     <>
       <Header setSearch={setSearch} />
       <main className="main-container">
-        <Sidebar likedEmojis={likedEmojis} />
+        <Sidebar  />
         <Outlet />
       </main>
     </>

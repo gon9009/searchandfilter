@@ -7,6 +7,10 @@ function SubMenu({ data }) {
   const showSubNav = () => setSubNav(!subNav);
   const navigate = useNavigate();
 
+  const handleNavigate = (category) => {
+    navigate(`/categories/${category}`);
+  };
+
   return (
     <>
       {/* 카테고리 메뉴 */}
@@ -21,8 +25,8 @@ function SubMenu({ data }) {
         {subNav &&
           data.subCategory.map((sub) => (
             <button
+              onClick={() => handleNavigate(sub.urltitle.toLowerCase())}
               key={sub.title}
-              onClick={() => navigate(sub.title === "Liked" ? "/liked" : "#")}
             >
               {sub.title}
               <p>{sub.emoji}</p>

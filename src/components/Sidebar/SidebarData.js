@@ -11,34 +11,42 @@ export const SidebarData = [
       {
         title: "Smileys & People",
         emoji: "😀",
+        urltitle:"smileys and people"
       },
       {
         title: "Animals & Nature",
         emoji: "🐵",
+        urltitle:"animals and nature"
       },
       {
         title: "Food & Drink",
         emoji: "🍎",
+        urltitle:"food and drink"
       },
       {
         title: "Travel & Places",
         emoji: "🌍",
+        urltitle:"travel and places"
       },
       {
         title: "Activities",
         emoji: "⚾",
+        urltitle:"activities"
       },
       {
         title: "Object",
         emoji: "👓",
+        urltitle:"objects"
       },
       {
         title: "Symbols",
         emoji: "⛔",
+        urltitle:"symbols"
       },
       {
         title: "Flags",
         emoji: "🚩",
+        urltitle:"flags"
       },
       {
         title: "Liked",
