@@ -51,3 +51,8 @@
     transform: translateY(-20px);
   }
 }
+/* Component.css */
+.heart-icon {
+  border: none; /* 테두리 없애기 */
+  transition: color 0.5s ease;
+}

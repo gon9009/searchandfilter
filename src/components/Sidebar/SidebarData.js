@@ -8,45 +8,46 @@ export const SidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subCategory: [
+
       {
         title: "Smileys & People",
         emoji: "😀",
-        urltitle:"smileys and people"
+        urltitle: "smileys and people",
       },
       {
         title: "Animals & Nature",
         emoji: "🐵",
-        urltitle:"animals and nature"
+        urltitle: "animals and nature",
       },
       {
         title: "Food & Drink",
         emoji: "🍎",
-        urltitle:"food and drink"
+        urltitle: "food and drink",
       },
       {
         title: "Travel & Places",
         emoji: "🌍",
-        urltitle:"travel and places"
+        urltitle: "travel and places",
       },
       {
         title: "Activities",
         emoji: "⚾",
-        urltitle:"activities"
+        urltitle: "activities",
       },
       {
         title: "Object",
         emoji: "👓",
-        urltitle:"objects"
+        urltitle: "objects",
       },
       {
         title: "Symbols",
         emoji: "⛔",
-        urltitle:"symbols"
+        urltitle: "symbols",
       },
       {
         title: "Flags",
         emoji: "🚩",
-        urltitle:"flags"
+        urltitle: "flags",
       },
       {
         title: "Liked",

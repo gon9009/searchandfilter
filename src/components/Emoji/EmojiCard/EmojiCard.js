@@ -35,7 +35,11 @@ function EmojiCard({ emoji, copyToClipboard, likedEmojis, setLikedEmojis }) {
       <div className="emoji-item">
         <div style={{ fontSize: "3rem" }}>{emojiString}</div>
         <div className="like-btn" onClick={handleClick}>
-          {isLiked ? <IoHeart style={{ color: "red" }} /> : <CiHeart />}
+          {isLiked ? (
+            <IoHeart style={{ color: "red" }} />
+          ) : (
+            <IoHeart style={{ border: "none", color: "lightgray" }} />
+          )}
         </div>
       </div>
       {copy && <p className="copy-message">복사완료!</p>}

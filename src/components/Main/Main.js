@@ -21,24 +21,29 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
 
+  // 1. 데이터 필터링과 페이징
   useEffect(() => {
     if (data && data.length > 0) {
       let filtered = data;
 
+      // 사이드바 필터링 
       if (categoryName) {
         filtered = filtered.filter((emoji) =>
           emoji.category.toLowerCase() === categoryName.toLowerCase()
         );
       }
 
+      // 서칭 필터링 
       if (debouncedSearch !== "") {
         filtered = filtered.filter((emoji) =>
           emoji.name.toLowerCase().includes(debouncedSearch.toLowerCase())
         );
       }
 
+      // 현재 페이지에서 데이터를 가져오기 시작할 인덱스 계산 
       const start = (page - 1) * LIMIT;
       const paginatedData = filtered.slice(start, start + LIMIT);
+      // "현재 페이지"에 해당하는 데이터만 포함 하는 배열
       setFilteredData(paginatedData);
 
       // 필터링된 데이터 기준 페이지 수 계산
@@ -46,6 +51,7 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
     }
   }, [debouncedSearch, data, page, categoryName]);
 
+  // 2. 전체 데이터의 총 페이지 수 
   useEffect(() => {
     // 전체 데이터 기준 페이지 수 계산
     setTotalPages(data ? Math.ceil(data.length / LIMIT) : 1);
