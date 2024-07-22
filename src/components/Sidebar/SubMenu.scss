@@ -16,6 +16,15 @@
   width: 90%;
   display: flex;
   flex-direction: column;
+  overflow: hidden; 
+  max-height: 0; // 기본 높이는 0으로 설정
+  transition: max-height 0.5s ease; // 애니메이션 효과 추가
+
+  &.open {
+    // open 일떄 height 지정 
+    max-height: 500px; 
+  }
+
   button {
     margin-top: 7px;
     @extend .button-style-sidebar;

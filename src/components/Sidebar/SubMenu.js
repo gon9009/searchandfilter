@@ -20,8 +20,8 @@ function SubMenu({ data }) {
           <div>{subNav ? data.iconClosed : data.iconOpened}</div>
         </button>
       </div>
-      {/* 서브 메뉴 */}
-      <div className="category-submenu">
+      {/* 서브 메뉴 (애니메이션 추가) */}
+      <div className={`category-submenu ${subNav ? "open" : ""}`}>
         {subNav &&
           data.subCategory.map((sub) => (
             <button

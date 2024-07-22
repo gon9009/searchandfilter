@@ -14,6 +14,7 @@ const DELAY = 300;
 function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const [filteredData, setFilteredData] = useState([]);
   const { data, error, isLoading } = useFetchEmoji();
+  const [copiedEmoji,setCopiedEmoji] = useState('') // 복사된 이모지 저장 상태 
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
   const [totalFilteredPages, setTotalFilteredPages] = useState(1); // 필터링된 데이터 페이지 수
@@ -86,6 +87,8 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
         copyToClipboard={copyToClipboard}
         likedEmojis={likedEmojis}
         setLikedEmojis={setLikedEmojis}
+        copiedEmoji={copiedEmoji}
+        setCopiedEmoji={setCopiedEmoji}
       />
     </>
   );
