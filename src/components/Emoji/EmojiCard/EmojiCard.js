@@ -10,7 +10,8 @@ function EmojiCard({ emoji, copyToClipboard, likedEmojis, setLikedEmojis }) {
   const emojiString = decode(htmlCode[0]);
 
   const isLiked = likedEmojis.some((e) => e.name === emoji.name);
-
+  
+  // 
   const handleClick = (event) => {
     event.stopPropagation();
     if (isLiked) {

@@ -6,9 +6,9 @@ import { useState } from "react";
 
 const App = () => {
   const [search, setSearch] = useState("");
+  // 좋아요한 이모지 저장 (전역으로 관리)
   const [likedEmojis, setLikedEmojis] = useState([]);
 
-  // Layout/ Main 은 기본 뷰
   return (
     <Router>
       <Routes>

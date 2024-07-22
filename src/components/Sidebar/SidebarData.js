@@ -8,7 +8,6 @@ export const SidebarData = [
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subCategory: [
-
       {
         title: "Smileys & People",
         emoji: "😀",
@@ -52,6 +51,7 @@ export const SidebarData = [
       {
         title: "Liked",
         emoji: "❤️",
+        urltitle: "liked",
       },
     ],
   },
