@@ -18,11 +18,14 @@ function EmojiContainer({
   copiedEmoji,
   setCopiedEmoji,
   isLoading,
-  categoryName
+  categoryName,
+  handleCopyToClipboard
 }) {
   return (
     <div className="emoji-container">
-      <EmojiTextArea />
+      <EmojiTextArea 
+        setCopiedEmoji={setCopiedEmoji}
+        copiedEmoji={copiedEmoji}/>
       <EmojiList
         copyToClipboard={copyToClipboard}
         filteredData={filteredData}
@@ -33,6 +36,7 @@ function EmojiContainer({
         setCopiedEmoji={setCopiedEmoji}
         isLoading={isLoading}
         categoryName={categoryName}
+        handleCopyToClipboard={handleCopyToClipboard}
       />
       <PaginationContainer
         handleNextPage={handleNextPage}

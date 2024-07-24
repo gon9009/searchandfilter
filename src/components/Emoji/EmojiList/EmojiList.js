@@ -11,7 +11,10 @@ function EmojiList({
   setLikedEmojis,
   isLoading,
   categoryName,
+  setCopiedEmoji,
+  handleCopyToClipboard
 }) {
+
   // 검색결과/좋아요 이모지 조건
   const getMessageType = () => {
     if (isLoading) {
@@ -32,7 +35,6 @@ function EmojiList({
         return "noSearch";
       }
     }
-
     return null; // 그 외의 경우에는 메시지 표시하지 않음
   };
 
@@ -53,6 +55,8 @@ function EmojiList({
               copyToClipboard={copyToClipboard}
               likedEmojis={likedEmojis}
               setLikedEmojis={setLikedEmojis}
+              setCopiedEmoji={setCopiedEmoji}
+              handleCopyToClipboard={handleCopyToClipboard}
             />
           ))}
         </section>

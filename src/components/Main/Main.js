@@ -13,7 +13,7 @@ const DELAY = 300;
 
 function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const [filteredData, setFilteredData] = useState([]);
-  const [copiedEmoji, setCopiedEmoji] = useState(""); // 복사된 이모지 저장 상태
+  const [copiedEmoji, setCopiedEmoji] = useState([]); // 복사된 이모지 저장 상태
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
   const [totalFilteredPages, setTotalFilteredPages] = useState(1); // 필터링된 데이터 페이지 수
@@ -79,6 +79,12 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
     return <div>데이터 패칭 오류!</div>;
   }
 
+  // 1.클립 보드에 복사 2.카피 상태로 저장
+  const handleCopyToClipboard = (emojiString) => {
+    copyToClipboard(emojiString);
+    setCopiedEmoji([...copiedEmoji, emojiString]);
+  };
+
   return (
     <>
       <EmojiContainer
@@ -94,6 +100,7 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
         setLikedEmojis={setLikedEmojis}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}
+        handleCopyToClipboard={handleCopyToClipboard}
         isLoading={isLoading}
         categoryName={categoryName}
       />
