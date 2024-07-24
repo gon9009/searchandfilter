@@ -16,7 +16,9 @@ function EmojiContainer({
   likedEmojis,
   setLikedEmojis,
   copiedEmoji,
-  setCopiedEmoji
+  setCopiedEmoji,
+  isLoading,
+  categoryName
 }) {
   return (
     <div className="emoji-container">
@@ -29,6 +31,8 @@ function EmojiContainer({
         setLikedEmojis={setLikedEmojis}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}
+        isLoading={isLoading}
+        categoryName={categoryName}
       />
       <PaginationContainer
         handleNextPage={handleNextPage}

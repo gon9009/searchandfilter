@@ -1,3 +1,5 @@
+@import "../../../Styles/variables";
+
 // 그리드 컨테이너
 .emoji-list-container {
   width: 90%;
@@ -9,4 +11,10 @@
   column-gap: 1rem;
   row-gap: 1rem;
   overflow-y: hidden;
+}
+
+.empty-result-container {
+  p {
+    color: grey;
+  }
 }

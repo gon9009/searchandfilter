@@ -28,12 +28,13 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
     if (data && data.length > 0) {
       let filtered = data;
       // 사이드바 필터링
-     if (categoryName) {
+      if (categoryName) {
         if (categoryName === "liked") {
           filtered = likedEmojis; // Liked 카테고리일 경우 likedEmojis로 필터링
         } else {
-          filtered = filtered.filter((emoji) =>
-            emoji.category.toLowerCase() === categoryName.toLowerCase()
+          filtered = filtered.filter(
+            (emoji) =>
+              emoji.category.toLowerCase() === categoryName.toLowerCase()
           );
         }
       }
@@ -46,13 +47,14 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
       // 현재 페이지에서 데이터를 가져오기 시작할 인덱스 계산
       const start = (page - 1) * LIMIT;
       const paginatedData = filtered.slice(start, start + LIMIT);
+
       // "현재 페이지"에 해당하는 데이터만 포함 하는 배열
       setFilteredData(paginatedData);
 
       // 필터링된 데이터 기준 페이지 수 계산
       setTotalFilteredPages(Math.ceil(filtered.length / LIMIT));
     }
-  }, [debouncedSearch, data, page, categoryName]);
+  }, [debouncedSearch, data, page, categoryName, likedEmojis]);
 
   // 2. 전체 데이터의 총 페이지 수
   useEffect(() => {
@@ -61,7 +63,6 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   }, [data]);
 
   // 좋아요한 이모지 상태 관리
-
   const handleNextPage = () => {
     setPage((prevPage) => Math.min(prevPage + 1, totalFilteredPages));
   };
@@ -83,7 +84,7 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
       <EmojiContainer
         setPage={setPage}
         page={page}
-        totalPages={totalFilteredPages} // 필터링된 데이터 기준 페이지 수
+        totalPages={totalFilteredPages}
         setSearch={setSearch}
         filteredData={filteredData}
         handleNextPage={handleNextPage}
@@ -93,6 +94,8 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
         setLikedEmojis={setLikedEmojis}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}
+        isLoading={isLoading}
+        categoryName={categoryName}
       />
     </>
   );
