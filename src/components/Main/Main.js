@@ -12,18 +12,18 @@ const LIMIT = 30;
 const DELAY = 300;
 
 function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
-  const [filteredData, setFilteredData] = useState([]);
-  const [copiedEmoji, setCopiedEmoji] = useState([]); // 복사된 이모지 저장 상태
-  const [page, setPage] = useState(1);
+  const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
+  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
+  const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
+  const [page, setPage] = useState(1); // 현재 페이지
   const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-  const [totalFilteredPages, setTotalFilteredPages] = useState(1); // 필터링된 데이터 페이지 수
 
   const { copyToClipboard } = useClipBoard();
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
   const { data, error, isLoading } = useFetchEmoji();
 
-  // 1. 데이터 필터링과 페이징
+  // 사이드바/서칭 필터링
   useEffect(() => {
     if (data && data.length > 0) {
       let filtered = data;
@@ -44,27 +44,25 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
           emoji.name.toLowerCase().includes(debouncedSearch.toLowerCase())
         );
       }
-      // 현재 페이지에서 데이터를 가져오기 시작할 인덱스 계산
-      const start = (page - 1) * LIMIT;
-      const paginatedData = filtered.slice(start, start + LIMIT);
 
-      // "현재 페이지"에 해당하는 데이터만 포함 하는 배열
-      setFilteredData(paginatedData);
-
-      // 필터링된 데이터 기준 페이지 수 계산
-      setTotalFilteredPages(Math.ceil(filtered.length / LIMIT));
+      setFilteredData(filtered);
     }
-  }, [debouncedSearch, data, page, categoryName, likedEmojis]);
+  }, [debouncedSearch, data, categoryName, likedEmojis]);
 
-  // 2. 전체 데이터의 총 페이지 수
+  // 페이지당 30개씩 분할하기 
   useEffect(() => {
-    // 전체 데이터 기준 페이지 수 계산
-    setTotalPages(data ? Math.ceil(data.length / LIMIT) : 1);
-  }, [data]);
+    const start = (page - 1) * LIMIT;
+    const paginated = filteredData.slice(start, start + LIMIT);
+    setPaginatedData(paginated);
+  }, [filteredData, page]);
 
-  // 좋아요한 이모지 상태 관리
+  // 총 페이지 수 구하기 
+  useEffect(() => {
+    setTotalPages(Math.ceil(filteredData.length / LIMIT));
+  }, [filteredData]);
+
   const handleNextPage = () => {
-    setPage((prevPage) => Math.min(prevPage + 1, totalFilteredPages));
+    setPage((prevPage) => Math.min(prevPage + 1, totalPages));
   };
 
   const handlePrevPage = () => {
@@ -79,7 +77,6 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
     return <div>데이터 패칭 오류!</div>;
   }
 
-  // 1.클립 보드에 복사 2.카피 상태로 저장
   const handleCopyToClipboard = (emojiString) => {
     copyToClipboard(emojiString);
     setCopiedEmoji([...copiedEmoji, emojiString]);
@@ -90,9 +87,9 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
       <EmojiContainer
         setPage={setPage}
         page={page}
-        totalPages={totalFilteredPages}
+        totalPages={totalPages}
         setSearch={setSearch}
-        filteredData={filteredData}
+        filteredData={paginatedData}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         copyToClipboard={copyToClipboard}
