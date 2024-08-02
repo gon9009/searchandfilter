@@ -1,6 +1,3 @@
-@import "../../Styles/variables";
-
-// 메인 컨테이너 (이모지 컨테이너 + 사이드 바)
 .main-container {
   display: grid;
   grid-template-columns: 3fr 7fr;
@@ -11,5 +8,3 @@
   height: 1000px;
 }
 
-// 사이드바 3fr 
-// 컨테이너 7fr 

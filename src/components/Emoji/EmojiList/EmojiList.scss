@@ -1,4 +1,4 @@
-@import "../../../Styles/variables";
+@import "../../../Styles/abstracts/variables";
 
 // 그리드 컨테이너
 .emoji-list-container {
@@ -14,6 +14,15 @@
 }
 
 .empty-result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  svg {
+    color: gray;
+  }
   p {
     color: grey;
   }

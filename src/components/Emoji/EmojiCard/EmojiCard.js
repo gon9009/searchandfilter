@@ -18,7 +18,6 @@ function EmojiCard({
 
   const isLiked = likedEmojis.some((e) => e.name === emoji.name);
 
-  //
   const handleLikedClick = (event) => {
     event.stopPropagation();
     if (isLiked) {
@@ -37,14 +36,14 @@ function EmojiCard({
   };
 
   return (
-    <div onClick={handleCopyClick} className="emoji-background">
+    <div onClick={handleCopyClick} className="btn btn-emoji-bg">
       <div className="emoji-item">
         <div style={{ fontSize: "3rem" }}>{emojiString}</div>
-        <div className="like-btn" onClick={handleLikedClick}>
+        <div className="liked" onClick={handleLikedClick}>
           {isLiked ? (
             <IoHeart style={{ color: "red" }} />
           ) : (
-            <IoHeart style={{ border: "none", color: "lightgray" }} />
+            <IoHeart style={{ color: "#E0E0E0" }} />
           )}
         </div>
       </div>

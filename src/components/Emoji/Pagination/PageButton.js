@@ -10,7 +10,7 @@ function PageButton({ direction, handleClick, page, totalPages }) {
   const isLastPage = page === totalPages;
   return (
     <button
-      className="btn-pagination"
+      className="btn btn-pagination"
       disabled={direction === "prev" ? isFirstPage : isLastPage}
       onClick={handleClick}
     >

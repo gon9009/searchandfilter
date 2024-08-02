@@ -13,7 +13,6 @@ const DELAY = 300;
 
 function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
-  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
   const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
   const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
@@ -22,15 +21,15 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
   const { data, error, isLoading } = useFetchEmoji();
+  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
 
   // 사이드바/서칭 필터링
   useEffect(() => {
     if (data && data.length > 0) {
       let filtered = data;
-      // 사이드바 필터링
       if (categoryName) {
         if (categoryName === "liked") {
-          filtered = likedEmojis; // Liked 카테고리일 경우 likedEmojis로 필터링
+          filtered = likedEmojis;
         } else {
           filtered = filtered.filter(
             (emoji) =>
@@ -38,25 +37,23 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
           );
         }
       }
-      // 서칭 필터링
       if (debouncedSearch !== "") {
         filtered = filtered.filter((emoji) =>
           emoji.name.toLowerCase().includes(debouncedSearch.toLowerCase())
         );
       }
-
       setFilteredData(filtered);
     }
   }, [debouncedSearch, data, categoryName, likedEmojis]);
 
-  // 페이지당 30개씩 분할하기 
+  // 페이지당 30개씩 데이터 분할
   useEffect(() => {
     const start = (page - 1) * LIMIT;
     const paginated = filteredData.slice(start, start + LIMIT);
     setPaginatedData(paginated);
   }, [filteredData, page]);
 
-  // 총 페이지 수 구하기 
+  // 총 페이지 수 구하기
   useEffect(() => {
     setTotalPages(Math.ceil(filteredData.length / LIMIT));
   }, [filteredData]);
@@ -89,6 +86,7 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
         page={page}
         totalPages={totalPages}
         setSearch={setSearch}
+        // 변경 사항 !!!
         filteredData={paginatedData}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}

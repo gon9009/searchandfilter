@@ -1,12 +1,11 @@
-@import "../../../Styles/variables";
+@import "../../../Styles/abstracts/variables";
 
 // 이모지 컨테이너
 .emoji-container {
-  background-color: $color-grey;
-  border-right: $line-color;
+  background-color: $color-white;
+  border-right: 1px solid $color-mid-gray;
   display: grid;
   grid-template-rows: 1fr 7fr 1fr;
-  // 모든 아이템 수직/수평 정렬
   align-items: center;
   justify-items: center;
   overflow-y: hidden;

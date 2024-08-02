@@ -14,17 +14,16 @@ function SubMenu({ data }) {
   return (
     <>
       {/* 카테고리 메뉴 */}
-      <div className="sidebar-category">
-        <button onClick={showSubNav}>
-          <p className="category-name"> {data.categoryName}</p>
-          <div>{subNav ? data.iconClosed : data.iconOpened}</div>
-        </button>
-      </div>
-      {/* 서브 메뉴 (애니메이션 추가) */}
+      <button className="btn btn-category" onClick={showSubNav}>
+        <p className="category-name"> {data.categoryName}</p>
+        {subNav ? data.iconClosed : data.iconOpened}
+      </button>
+      {/* 서브 메뉴 subNav(True)*/}
       <div className={`category-submenu ${subNav ? "open" : ""}`}>
         {subNav &&
           data.subCategory.map((sub) => (
             <button
+              className="btn btn-submenu"
               onClick={() => handleNavigate(sub.urltitle.toLowerCase())}
               key={sub.title}
             >

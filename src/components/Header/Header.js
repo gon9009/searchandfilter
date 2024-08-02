@@ -14,7 +14,7 @@ function Header({ setSearch }) {
     <header>
       <div className="header-container">
         <h2 className="title" onClick={handleClick}>
-          Emoji
+          Emoji 
           <p>Hub</p>
         </h2>
         <EmojiSearch setSearch={setSearch} />

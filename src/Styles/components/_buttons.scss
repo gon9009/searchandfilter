@@ -1,0 +1,39 @@
+// 버튼 믹스인
+@mixin btn(
+  $bg-color: #fff,
+  $font-size: 1rem,
+  $padding: 8px,
+  $border: none,
+  $border-radius: 0,
+  $box-shadow: none,
+  $width: auto,
+  $hover-bg: null,
+  $transition: null,
+  $flex: true // 새 플래그 추가
+) {
+  background-color: $bg-color;
+  font-size: $font-size;
+  padding: $padding;
+  border: $border;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  display: $width; // 필요에 따라 수정
+  width: $width;
+  
+  @if $flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  @if $hover-bg {
+    &:hover {
+      background-color: $hover-bg;
+    }
+  }
+  
+  @if $transition {
+    transition: $transition;
+  }
+}
