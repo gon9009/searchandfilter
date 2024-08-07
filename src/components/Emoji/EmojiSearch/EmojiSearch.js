@@ -4,10 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import { useStore } from "../../../store/useStore";
 
 function EmojiSearch() {
+  const setSearch = useStore((state) => state.setSearch);
 
-  const { setSearch } = useStore((state) => ({
-    setSearch: state.setSearch,
-  }));
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };

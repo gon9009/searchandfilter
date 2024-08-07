@@ -3,13 +3,16 @@ import PageButton from "./PageButton";
 import Pagination from "./Pagination";
 import "./PaginationContainer.scss";
 
-// 이전버튼 / 페이지네이션 / 다음 버튼 포함
-function PaginationContainer({
-  page,
-  totalPages,
-  handleNextPage,
-  handlePrevPage,
-}) {
+function PaginationContainer({ totalPages,page,setPage }) {
+
+  const handleNextPage = () => {
+    setPage((page) => Math.min(page + 1, totalPages));
+  };
+
+  const handlePrevPage = () => {
+    setPage((page) => Math.max(page - 1, 1));
+  };
+
   return (
     <section className="pagination-container">
       <PageButton

@@ -13,14 +13,12 @@ const LIMIT = 30;
 const DELAY = 300;
 
 function Main() {
-  const { likedEmojis, setLikedEmojis, setSearch, search } = useStore(
-    (state) => ({
-      likedEmojis: state.likedEmojis,
-      setLikedEmojis: state.setLikedEmojis,
-      setSearch: state.setSearch,
-      search: state.search,
-    })
-  );
+  const { data, error, isLoading } = useFetchEmoji();
+
+  const { likedEmojis, search } = useStore((state) => ({
+    likedEmojis: state.likedEmojis,
+    search: state.search,
+  }));
   const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
   const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
@@ -29,7 +27,6 @@ function Main() {
   const { copyToClipboard } = useClipBoard();
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
-  const { data, error, isLoading } = useFetchEmoji();
   const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
 
   // 사이드바/서칭 필터링
@@ -55,33 +52,18 @@ function Main() {
     }
   }, [debouncedSearch, data, categoryName, likedEmojis]);
 
-  // 페이지당 30개씩 데이터 분할
+  // 페이지별 데이터 분할 , 페이지가 변할때 마다 데이터 조각을 계산한다
   useEffect(() => {
+    // 데이터 시작 인덱스를 구한다
     const start = (page - 1) * LIMIT;
     const paginated = filteredData.slice(start, start + LIMIT);
     setPaginatedData(paginated);
   }, [filteredData, page]);
 
-  // 총 페이지 수 구하기
+  // totalPage 구하기
   useEffect(() => {
     setTotalPages(Math.ceil(filteredData.length / LIMIT));
   }, [filteredData]);
-
-  const handleNextPage = () => {
-    setPage((prevPage) => Math.min(prevPage + 1, totalPages));
-  };
-
-  const handlePrevPage = () => {
-    setPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <div>데이터 패칭 오류!</div>;
-  }
 
   // 1. 클립보드에 저장 + 2.CopiedEmoji 배열에 저장
   const handleCopyToClipboard = (emojiString) => {
@@ -92,13 +74,11 @@ function Main() {
   return (
     <>
       <EmojiContainer
-        setPage={setPage}
         page={page}
+        setPage={setPage}
         totalPages={totalPages}
         // 변경 사항 !!!
         filteredData={paginatedData}
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
         copyToClipboard={copyToClipboard}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}

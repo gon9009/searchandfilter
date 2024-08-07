@@ -1,5 +1,5 @@
-// 이모지 리스트 페이지 이동 버튼
 // direction 사용자 정의 속성 활용
+// 페이지 이동 버튼 
 import React from "react";
 import "./PageButton.scss";
 import { FaArrowRight } from "react-icons/fa";

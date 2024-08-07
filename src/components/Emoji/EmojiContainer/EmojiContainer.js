@@ -5,18 +5,16 @@ import PaginationContainer from "../Pagination/PaginationContainer";
 import EmojiTextArea from "../EmojiTextArea/EmojiTextArea";
 
 function EmojiContainer({
-  handleNextPage,
-  handlePrevPage,
   filteredData,
-  setPage,
   copyToClipboard,
   totalPages,
-  page,
   copiedEmoji,
   setCopiedEmoji,
   isLoading,
   categoryName,
   handleCopyToClipboard,
+  page,
+  setPage,
 }) {
   return (
     <div className="emoji-container">
@@ -34,11 +32,9 @@ function EmojiContainer({
         handleCopyToClipboard={handleCopyToClipboard}
       />
       <PaginationContainer
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
-        setPage={setPage}
         totalPages={totalPages}
         page={page}
+        setPage={setPage}
       />
     </div>
   );
