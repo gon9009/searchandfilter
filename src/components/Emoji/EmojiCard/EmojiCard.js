@@ -2,31 +2,30 @@ import React, { useState } from "react";
 import { decode } from "html-entities";
 import "./EmojiCard.scss";
 import { IoHeart } from "react-icons/io5";
+import { useStore } from "../../../store/useStore";
 
 // 개별 이모지
-function EmojiCard({
-  emoji,
-  copyToClipboard,
-  likedEmojis,
-  setLikedEmojis,
-  setCopiedEmoji,
-  handleCopyToClipboard,
-}) {
+function EmojiCard({ emoji, handleCopyToClipboard }) {
+  // 스토어에서 가져오기
+  const { likedEmojis, toggleLikeEmoji } = useStore((state) => ({
+    likedEmojis: state.likedEmojis,
+    toggleLikeEmoji: state.toggleLikeEmoji,
+  }));
+
   const [copy, setCopy] = useState(false);
-  const { name, htmlCode, category, group } = emoji;
+  const { htmlCode } = emoji;
   const emojiString = decode(htmlCode[0]);
 
+  // 좋아요한 이모지 T F 검사
   const isLiked = likedEmojis.some((e) => e.name === emoji.name);
 
+  // 좋아요 버튼 클릭시
   const handleLikedClick = (event) => {
     event.stopPropagation();
-    if (isLiked) {
-      setLikedEmojis(likedEmojis.filter((e) => e.name !== emoji.name));
-    } else {
-      setLikedEmojis([...likedEmojis, emoji]);
-    }
+    toggleLikeEmoji(emoji, isLiked);
   };
 
+  // 이모지 클릭시 CopiedEmoji 배열에 저장
   const handleCopyClick = () => {
     handleCopyToClipboard(emojiString);
     setCopy(true);

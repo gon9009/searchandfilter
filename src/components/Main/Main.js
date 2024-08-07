@@ -6,12 +6,21 @@ import useDebounce from "../../Hooks/useDebounce";
 import Loading from "../Common/Loading";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useStore } from "../../store/useStore";
 import "./Main.scss";
 
 const LIMIT = 30;
 const DELAY = 300;
 
-function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
+function Main() {
+  const { likedEmojis, setLikedEmojis, setSearch, search } = useStore(
+    (state) => ({
+      likedEmojis: state.likedEmojis,
+      setLikedEmojis: state.setLikedEmojis,
+      setSearch: state.setSearch,
+      search: state.search,
+    })
+  );
   const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
   const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
@@ -74,6 +83,7 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
     return <div>데이터 패칭 오류!</div>;
   }
 
+  // 1. 클립보드에 저장 + 2.CopiedEmoji 배열에 저장
   const handleCopyToClipboard = (emojiString) => {
     copyToClipboard(emojiString);
     setCopiedEmoji([...copiedEmoji, emojiString]);
@@ -85,14 +95,11 @@ function Main({ search, setSearch, likedEmojis, setLikedEmojis }) {
         setPage={setPage}
         page={page}
         totalPages={totalPages}
-        setSearch={setSearch}
         // 변경 사항 !!!
         filteredData={paginatedData}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         copyToClipboard={copyToClipboard}
-        likedEmojis={likedEmojis}
-        setLikedEmojis={setLikedEmojis}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}
         handleCopyToClipboard={handleCopyToClipboard}

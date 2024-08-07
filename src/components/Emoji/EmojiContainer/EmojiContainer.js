@@ -8,13 +8,10 @@ function EmojiContainer({
   handleNextPage,
   handlePrevPage,
   filteredData,
-  setSearch,
   setPage,
   copyToClipboard,
   totalPages,
   page,
-  likedEmojis,
-  setLikedEmojis,
   copiedEmoji,
   setCopiedEmoji,
   isLoading,
@@ -30,9 +27,6 @@ function EmojiContainer({
       <EmojiList
         copyToClipboard={copyToClipboard}
         filteredData={filteredData}
-        setSearch={setSearch}
-        likedEmojis={likedEmojis}
-        setLikedEmojis={setLikedEmojis}
         copiedEmoji={copiedEmoji}
         setCopiedEmoji={setCopiedEmoji}
         isLoading={isLoading}

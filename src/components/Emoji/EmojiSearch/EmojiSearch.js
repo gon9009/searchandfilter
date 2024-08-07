@@ -1,9 +1,13 @@
 import React from "react";
 import "./EmojiSearch.scss";
 import { FaSearch } from "react-icons/fa";
+import { useStore } from "../../../store/useStore";
 
-function EmojiSearch({setSearch}) {
-  
+function EmojiSearch() {
+
+  const { setSearch } = useStore((state) => ({
+    setSearch: state.setSearch,
+  }));
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
