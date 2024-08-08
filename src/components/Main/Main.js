@@ -51,7 +51,7 @@ function Main() {
     }
   }, [debouncedSearch, data, categoryName, likedEmojis]);
 
-  // 페이지별 데이터 분할 , 페이지가 변할때 마다 데이터 조각을 계산한다
+  // 페이지가 변할때 마다 데이터 조각을 계산하는 useEffect
   useEffect(() => {
     // 데이터 시작 인덱스를 구한다
     const start = (page - 1) * LIMIT;
@@ -59,7 +59,7 @@ function Main() {
     setPaginatedData(paginated);
   }, [filteredData, page]);
 
-  // totalPage 구하기
+  // totalPages 를 구하는 useEFfect
   useEffect(() => {
     setTotalPages(Math.ceil(filteredData.length / LIMIT));
   }, [filteredData]);
