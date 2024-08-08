@@ -25,5 +25,6 @@ function EmojiList({
     </>
   );
 }
+const MemoizedEmojiList = React.memo(EmojiList);
 
-export default EmojiList;
+export default MemoizedEmojiList;

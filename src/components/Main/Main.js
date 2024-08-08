@@ -52,7 +52,6 @@ function Main() {
   const start = (page - 1) * LIMIT;
   const paginatedData = filteredData.slice(start, start + LIMIT);
   const totalPages = Math.ceil(filteredData.length / LIMIT);
-  //총 페이지 구하기
 
   // 1. 클립보드에 저장 + 2.CopiedEmoji 배열에 저장
   const handleCopyToClipboard = (emojiString) => {
