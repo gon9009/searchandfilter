@@ -3,18 +3,17 @@ import EmojiContainer from "../Emoji/EmojiContainer/EmojiContainer";
 import useFetchEmoji from "../../Hooks/useFetchEmoji";
 import useClipBoard from "../../Hooks/useClipBoard";
 import useDebounce from "../../Hooks/useDebounce";
-import Loading from "../Common/Loading";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useStore } from "../../store/useStore";
 import "./Main.scss";
+import Loading from "../Common/Loading";
 
 const LIMIT = 30;
 const DELAY = 300;
 
 function Main() {
-  const { data, error, isLoading } = useFetchEmoji();
-
+  const { data, isLoading, error } = useFetchEmoji();
   const { likedEmojis, search } = useStore((state) => ({
     likedEmojis: state.likedEmojis,
     search: state.search,
@@ -23,11 +22,11 @@ function Main() {
   const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
   const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
-
+  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
+  // ===================================================================================
   const { copyToClipboard } = useClipBoard();
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
-  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
 
   // 사이드바/서칭 필터링
   useEffect(() => {
@@ -71,13 +70,20 @@ function Main() {
     setCopiedEmoji([...copiedEmoji, emojiString]);
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <div>데이터 패칭 오류!</div>;
+  }
+
   return (
     <>
       <EmojiContainer
         page={page}
         setPage={setPage}
         totalPages={totalPages}
-        // 변경 사항 !!!
         filteredData={paginatedData}
         copyToClipboard={copyToClipboard}
         copiedEmoji={copiedEmoji}

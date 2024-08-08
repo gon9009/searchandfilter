@@ -3,6 +3,8 @@ import EmojiList from "../EmojiList/EmojiList";
 import "./EmojiContainer.scss";
 import PaginationContainer from "../Pagination/PaginationContainer";
 import EmojiTextArea from "../EmojiTextArea/EmojiTextArea";
+import { useStore } from "../../../store/useStore";
+import EmptyStateMessage from "../../Common/EmptyStateMessage";
 
 function EmojiContainer({
   filteredData,
@@ -16,26 +18,55 @@ function EmojiContainer({
   page,
   setPage,
 }) {
+  const likedEmojis = useStore((state) => state.likedEmojis);
+
+  // 검색 결과
+  const isEmptyState = () => {
+    if (categoryName === "liked") {
+      if (likedEmojis.length === 0) {
+        return "noLiked";
+      }
+      if (filteredData.length === 0) {
+        return "noSearch";
+      }
+    } else {
+      if (filteredData.length === 0) {
+        return "noSearch";
+      }
+    }
+    return null;
+  };
+
+  const emptyStateType = isEmptyState();
+
   return (
     <div className="emoji-container">
       <EmojiTextArea
         setCopiedEmoji={setCopiedEmoji}
         copiedEmoji={copiedEmoji}
       />
-      <EmojiList
-        copyToClipboard={copyToClipboard}
-        filteredData={filteredData}
-        copiedEmoji={copiedEmoji}
-        setCopiedEmoji={setCopiedEmoji}
-        isLoading={isLoading}
-        categoryName={categoryName}
-        handleCopyToClipboard={handleCopyToClipboard}
-      />
-      <PaginationContainer
-        totalPages={totalPages}
-        page={page}
-        setPage={setPage}
-      />
+      {emptyStateType ? (
+        <section className="empty-result-container">
+          <EmptyStateMessage type={emptyStateType} />
+        </section>
+      ) : (
+        <>
+          <EmojiList
+            copyToClipboard={copyToClipboard}
+            filteredData={filteredData}
+            copiedEmoji={copiedEmoji}
+            setCopiedEmoji={setCopiedEmoji}
+            isLoading={isLoading}
+            categoryName={categoryName}
+            handleCopyToClipboard={handleCopyToClipboard}
+          />
+          <PaginationContainer
+            totalPages={totalPages}
+            page={page}
+            setPage={setPage}
+          />
+        </>
+      )}
     </div>
   );
 }

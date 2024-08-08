@@ -1,7 +1,8 @@
 import React from "react";
 import { FiAlertCircle } from "react-icons/fi";
 
-// Props 로 빈 상태 메시지 타입을 결정하자 !!
+// 검색결과가 비어있거나 , 좋아요한 이모지가 없을때 예외 처리 렌더링 
+
 function EmptyStateMessage({ type }) {
   return (
     <>
