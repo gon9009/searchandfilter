@@ -1,8 +1,8 @@
 import React from "react";
 import EmojiContainer from "../Emoji/EmojiContainer/EmojiContainer";
-import useFetchEmoji from "../../Hooks/useFetchEmoji";
-import useClipBoard from "../../Hooks/useClipBoard";
-import useDebounce from "../../Hooks/useDebounce";
+import useFetchEmoji from "../../utils/Hooks/useFetchEmoji";
+import useClipBoard from "../../utils/Hooks/useClipBoard";
+import useDebounce from "../../utils/Hooks/useDebounce";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useStore } from "../../store/useStore";
@@ -19,9 +19,7 @@ function Main() {
     search: state.search,
   }));
   const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
-  const [paginatedData, setPaginatedData] = useState([]); // 페이지별 30개의 이모지 데이터 저장
   const [page, setPage] = useState(1); // 현재 페이지
-  const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
   const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
   // ===================================================================================
   const { copyToClipboard } = useClipBoard();
@@ -51,18 +49,10 @@ function Main() {
     }
   }, [debouncedSearch, data, categoryName, likedEmojis]);
 
-  // 페이지가 변할때 마다 데이터 조각을 계산하는 useEffect
-  useEffect(() => {
-    // 데이터 시작 인덱스를 구한다
-    const start = (page - 1) * LIMIT;
-    const paginated = filteredData.slice(start, start + LIMIT);
-    setPaginatedData(paginated);
-  }, [filteredData, page]);
-
-  // totalPages 를 구하는 useEFfect
-  useEffect(() => {
-    setTotalPages(Math.ceil(filteredData.length / LIMIT));
-  }, [filteredData]);
+  const start = (page - 1) * LIMIT;
+  const paginatedData = filteredData.slice(start, start + LIMIT);
+  const totalPages = Math.ceil(filteredData.length / LIMIT);
+  //총 페이지 구하기
 
   // 1. 클립보드에 저장 + 2.CopiedEmoji 배열에 저장
   const handleCopyToClipboard = (emojiString) => {
@@ -75,7 +65,7 @@ function Main() {
   }
 
   if (error) {
-    return <div>데이터 패칭 오류!</div>;
+    return <div>데이터 패칭 오류!{error.message}</div>;
   }
 
   return (

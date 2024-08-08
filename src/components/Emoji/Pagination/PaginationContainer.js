@@ -3,8 +3,7 @@ import PageButton from "./PageButton";
 import Pagination from "./Pagination";
 import "./PaginationContainer.scss";
 
-function PaginationContainer({ totalPages,page,setPage }) {
-
+function PaginationContainer({ page, setPage,totalPages }) {
   const handleNextPage = () => {
     setPage((page) => Math.min(page + 1, totalPages));
   };
@@ -12,6 +11,7 @@ function PaginationContainer({ totalPages,page,setPage }) {
   const handlePrevPage = () => {
     setPage((page) => Math.max(page - 1, 1));
   };
+
 
   return (
     <section className="pagination-container">
