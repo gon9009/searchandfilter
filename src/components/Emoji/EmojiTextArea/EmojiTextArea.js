@@ -1,16 +1,16 @@
 import React from "react";
 import "./EmojiTextArea.scss";
+import { useStore } from "../../../store/useStore";
 
-// 복사 완료되면 영역에 복사 붙혀넣기
-function EmojiTextArea({ copiedEmoji, setCopiedEmoji }) {
+// 상태 표시 역할 UI 담당 (리팩토링)
+function EmojiTextArea() {
+  const { copiedEmojis } = useStore((state) => ({
+    copiedEmojis: state.copiedEmojis,
+  }));
 
-  const handleChange = (event) => {
-    setCopiedEmoji(event.target.value);
-  };
-  
   return (
     <section className="text-area-container">
-      <textarea onChange={handleChange} value={copiedEmoji} />
+      <textarea value={copiedEmojis.join(" ")} readOnly />
     </section>
   );
 }

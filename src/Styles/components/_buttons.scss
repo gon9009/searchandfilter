@@ -7,6 +7,7 @@
   $border-radius: 0,
   $box-shadow: none,
   $width: auto,
+  // 기본값 null, 값을 제공하지 않으면 스타일 적용 X  
   $hover-bg: null,
   $transition: null,
   $flex: true // 새 플래그 추가

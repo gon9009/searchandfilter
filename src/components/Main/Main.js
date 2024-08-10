@@ -14,14 +14,13 @@ const DELAY = 300;
 
 function Main() {
   const { data, isLoading, error } = useFetchEmoji();
-  const { likedEmojis, search } = useStore((state) => ({
+  const { likedEmojis, search, addCopiedEmoji } = useStore((state) => ({
     likedEmojis: state.likedEmojis,
     search: state.search,
+    addCopiedEmoji: state.addCopiedEmoji,
   }));
   const [filteredData, setFilteredData] = useState([]); // 필터링 된 데이터
   const [page, setPage] = useState(1); // 현재 페이지
-  const [copiedEmoji, setCopiedEmoji] = useState([]); // textarea 복사된 이모지 저장 상태
-  // ===================================================================================
   const { copyToClipboard } = useClipBoard();
   const debouncedSearch = useDebounce(search, DELAY);
   const { categoryName } = useParams();
@@ -49,14 +48,20 @@ function Main() {
     }
   }, [debouncedSearch, data, categoryName, likedEmojis]);
 
+    // 카테고리 변경시 페이지 초기화
+  useEffect(() => {
+    setPage(1);
+  },[categoryName])
+
   const start = (page - 1) * LIMIT;
   const paginatedData = filteredData.slice(start, start + LIMIT);
   const totalPages = Math.ceil(filteredData.length / LIMIT);
 
-  // 1. 클립보드에 저장 + 2.CopiedEmoji 배열에 저장
   const handleCopyToClipboard = (emojiString) => {
+    // 1.클립보드에 저장 (커스텀 훅)
     copyToClipboard(emojiString);
-    setCopiedEmoji([...copiedEmoji, emojiString]);
+    // 2.상태 배열에 저장 
+    addCopiedEmoji(emojiString);
   };
 
   if (isLoading) {
@@ -74,9 +79,6 @@ function Main() {
         setPage={setPage}
         totalPages={totalPages}
         filteredData={paginatedData}
-        copyToClipboard={copyToClipboard}
-        copiedEmoji={copiedEmoji}
-        setCopiedEmoji={setCopiedEmoji}
         handleCopyToClipboard={handleCopyToClipboard}
         isLoading={isLoading}
         categoryName={categoryName}

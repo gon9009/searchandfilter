@@ -1,5 +1,5 @@
+@import "../../../Styles/abstracts/mixins";
+
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-align();
 }

@@ -8,10 +8,7 @@ import EmptyStateMessage from "../../Common/EmptyStateMessage";
 
 function EmojiContainer({
   filteredData,
-  copyToClipboard,
   totalPages,
-  copiedEmoji,
-  setCopiedEmoji,
   isLoading,
   categoryName,
   handleCopyToClipboard,
@@ -41,10 +38,7 @@ function EmojiContainer({
 
   return (
     <div className="emoji-container">
-      <EmojiTextArea
-        setCopiedEmoji={setCopiedEmoji}
-        copiedEmoji={copiedEmoji}
-      />
+      <EmojiTextArea />
       {emptyStateType ? (
         <section className="empty-result-container">
           <EmptyStateMessage type={emptyStateType} />
@@ -52,10 +46,7 @@ function EmojiContainer({
       ) : (
         <>
           <EmojiList
-            copyToClipboard={copyToClipboard}
             filteredData={filteredData}
-            copiedEmoji={copiedEmoji}
-            setCopiedEmoji={setCopiedEmoji}
             isLoading={isLoading}
             categoryName={categoryName}
             handleCopyToClipboard={handleCopyToClipboard}

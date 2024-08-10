@@ -11,4 +11,9 @@ export const useStore = create((set) => ({
         : [...state.likedEmojis, emoji];
       return { likedEmojis: likedEmojisUpdate };
     }),
+  copiedEmojis: [],
+  addCopiedEmoji: (emoji) =>
+    set((state) => ({
+      copiedEmojis: [...state.copiedEmojis, emoji],
+    })),
 }));

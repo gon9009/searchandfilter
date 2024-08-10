@@ -3,7 +3,7 @@
 
 // ============== 카테고리 버튼 =====================
 .btn-category {
-  font-family: inherit;
+  // 버튼 믹스인사용
   @include btn(
     $bg-color: $color-gray,
     $font-size: $--filter-header,
@@ -17,14 +17,14 @@
   font-weight: 500;
   border-bottom: 1px solid $color-light-gray;
 }
-// ================ 서브메뉴 버튼 ===================
+// ================ 서브메뉴 ===================
 .category-submenu {
   width: 90%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.5s ease;
+  transition: max-height 0.3s ease-in;
   &.open {
     max-height: 500px;
   }

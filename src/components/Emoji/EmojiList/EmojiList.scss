@@ -1,4 +1,5 @@
 @import "../../../Styles/abstracts/variables";
+@import "../../../Styles/abstracts/mixins";
 
 // 그리드 컨테이너
 .emoji-list-container {
@@ -14,11 +15,8 @@
 }
 
 .empty-result-container {
-  display: flex;
-  flex-direction: column;
+  @include center-align(column);
   gap: 2rem;
-  align-items: center;
-  justify-content: center;
   font-size: 2rem;
   svg {
     color: gray;

@@ -1,12 +1,11 @@
 @import "../../../Styles/abstracts/variables";
+@import "../../../Styles/abstracts/mixins";
 
 .text-area-container {
   width: 90%;
   height: 100%;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include center-align();
   textarea {
     border: 2px solid $color-mid-gray;
     resize: none;

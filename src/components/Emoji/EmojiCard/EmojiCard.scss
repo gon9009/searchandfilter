@@ -1,5 +1,6 @@
 @import "../../../Styles/components/_buttons";
 @import "../../../Styles/abstracts/variables";
+@import "../../../Styles/abstracts/mixins";
 
 .btn-emoji-bg {
   @include btn(
@@ -15,9 +16,7 @@
   position: relative;
 
   .emoji-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include center-align();
     .liked {
       position: absolute;
       bottom: 0px;

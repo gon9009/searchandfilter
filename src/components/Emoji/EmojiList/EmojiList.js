@@ -5,8 +5,6 @@ import "./EmojiList.scss";
 // 이모지 렌더링 컴포넌트
 function EmojiList({
   filteredData,
-  copyToClipboard,
-  setCopiedEmoji,
   handleCopyToClipboard,
 }) {
   return (
@@ -16,8 +14,6 @@ function EmojiList({
           <EmojiCard
             key={`${emoji.name}-${emoji.category}`}
             emoji={emoji}
-            copyToClipboard={copyToClipboard}
-            setCopiedEmoji={setCopiedEmoji}
             handleCopyToClipboard={handleCopyToClipboard}
           />
         ))}
