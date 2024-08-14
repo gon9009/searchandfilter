@@ -1,7 +1,8 @@
 import React from "react";
 import * as RiIcons from "react-icons/ri";
 
-export const SidebarData = [
+// 데이터로 관리
+export  const SidebarData = [
   {
     categoryName: "Category",
     categoryId: "1",

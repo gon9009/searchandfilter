@@ -1,6 +1,6 @@
 import "./Sidebar.scss";
 import SidebarData from "./SidebarData";
-import SubMenu from "./SubMenu";
+import SubMenu from "./Submenu/SubMenu";
 
 function Sidebar() {
   return (

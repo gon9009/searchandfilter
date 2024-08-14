@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// 검색어 디바운스로 최적화 적용
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
