@@ -23,8 +23,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease-in;
   &.open {
     max-height: 500px;
   }

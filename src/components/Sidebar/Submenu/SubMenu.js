@@ -6,6 +6,7 @@ import SubMenuButton from "./SubMenuButton";
 
 function SubMenu({ data }) {
   const [subNav, setSubNav] = useState(false);
+  
   // 하위 매뉴 토글
   const toggleSubNav = () => setSubNav(!subNav);
 
@@ -17,7 +18,7 @@ function SubMenu({ data }) {
 
   return (
     <>
-    {/* 카테고리 */}
+      {/* 카테고리 */}
       <CategoryButton
         categoryName={data.categoryName}
         icon={subNav ? data.iconClosed : data.iconOpened}
@@ -25,7 +26,7 @@ function SubMenu({ data }) {
       />
       {/* 서브메뉴 */}
       {subNav && (
-        <div className="category-submenu">
+        <div className="category-submenu" >
           {data.subCategory.map((sub) => (
             <SubMenuButton
               key={sub.urltitle}

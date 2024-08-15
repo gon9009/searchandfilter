@@ -39,6 +39,7 @@ function EmojiContainer({
   return (
     <div className="emoji-container">
       <EmojiTextArea />
+      {/* 예외 처리 컴포넌트  */}
       {emptyStateType ? (
         <section className="empty-result-container">
           <EmptyStateMessage type={emptyStateType} />
