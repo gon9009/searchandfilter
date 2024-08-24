@@ -4,7 +4,7 @@ import "./EmojiContainer.scss";
 import PaginationContainer from "../Pagination/PaginationContainer";
 import EmojiTextArea from "../EmojiTextArea/EmojiTextArea";
 import { useStore } from "../../../store/useStore";
-import EmptyStateMessage from "../../Common/EmptyStateMessage";
+import EmptyStateMessage from "../../common/EmptyStateMessage";
 
 function EmojiContainer({
   filteredData,
@@ -15,9 +15,10 @@ function EmojiContainer({
   page,
   setPage,
 }) {
+
   const likedEmojis = useStore((state) => state.likedEmojis);
 
-  // 검색 결과
+  // 검색 결과(함수로 분리시키자)
   const isEmptyState = () => {
     if (categoryName === "liked") {
       if (likedEmojis.length === 0) {
@@ -39,7 +40,6 @@ function EmojiContainer({
   return (
     <div className="emoji-container">
       <EmojiTextArea />
-      {/* 예외 처리 컴포넌트  */}
       {emptyStateType ? (
         <section className="empty-result-container">
           <EmptyStateMessage type={emptyStateType} />

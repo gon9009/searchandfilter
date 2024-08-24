@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useDebounce from "./useDebounce";
 
 function useFilteredData(data, categoryName, debouncedSearch, likedEmojis) {
   const [filteredData, setFilteredData] = useState([]);

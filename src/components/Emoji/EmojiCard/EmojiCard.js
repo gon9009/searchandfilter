@@ -6,7 +6,6 @@ import { useStore } from "../../../store/useStore";
 
 // 개별 이모지
 function EmojiCard({ emoji, handleCopyToClipboard }) {
-  // 스토어에서 가져오기
   const { likedEmojis, toggleLikeEmoji } = useStore((state) => ({
     likedEmojis: state.likedEmojis,
     toggleLikeEmoji: state.toggleLikeEmoji,

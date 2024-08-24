@@ -1,0 +1,51 @@
+
+## usePagination 
+
+start:0 , limit:30 
+
+페이지가 변할 때 , 페이지별 데이터 할당하는 로직 
+  const start = (page - 1) * limit;
+  const paginatedData = filteredData.slice(start, start + limit);
+
+만약 filteredData, 검색,카테고리를 통한 필터링 된 데이터가 100개라고 가정 
+배열의 데이터는 0 번부터 시작 
+
+
+페이지가 1 일때?
+
+- start 계산 
+page - 1 은 0
+따라서 Start는 0 * 30 = 0
+
+- paginatedData 추출 
+start 가 0 이고 limit이 30 이므로 start + limit은 0 + 30 = 30
+
+
+페이지가 4 일때?
+
+- start 계산 
+page -1 은 3 
+따라서 start는 3 * 30 = 90
+
+- paginatedData 추출 
+start 가 90 이고 limit이 30 이므로 start + limit 은 120
+slice 의 동작으로 인해 100 개만 가져온다 
+
+## useFilteredData 
+
+검색어를 필터링 하는 useEffect,
+사용자가 검색어를 입력하면 데이터는 useEffect를 통하여 필터링 
+
+
+카테고리를 필터링 하는 useEffect 로 분리되어 있다 
+사용자가 사이드바의 카테고리를 선택하면 데이터는 useEffect를 통하여 필터링 
+필터링된 데이터는 공통의 상태 filteredData 에 저장된다 
+
+## useFetchEmoji
+
+useQuery를 통한 외부 데이터 패칭 
+
+## useClipboard 
+
+
+
