@@ -1,6 +1,7 @@
 import create from "zustand";
 
 export const useStore = create((set) => ({
+  
   // 검색어 상태
   search: "",
   // 좋아요한 이모지 상태
@@ -25,4 +26,6 @@ export const useStore = create((set) => ({
     set((state) => ({
       copiedEmojis: [...state.copiedEmojis, emoji],
     })),
+
+    
 }));

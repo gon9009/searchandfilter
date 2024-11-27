@@ -1,7 +1,0 @@
-@import "../../Styles/abstracts/variables";
-@import "../../Styles/abstracts/mixins";
-
-.loading-container {
-  background-color: $color-gray;
-  @include center-align();
-}

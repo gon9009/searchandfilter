@@ -1,9 +1,0 @@
-@import "../../../Styles/abstracts/mixins";
-
-.pagination-container {
-  padding: 20px;
-  width: 90%;
-  height: 100%;
-  @include center-align();
-  gap: 10px;
-}
