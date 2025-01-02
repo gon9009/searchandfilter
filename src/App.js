@@ -23,4 +23,3 @@ const App = () => {
 
 export default App;
 
-// 링크로 외부 폰트 불러오기

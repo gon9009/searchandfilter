@@ -1,7 +1,0 @@
-// Flex 중앙 정렬 믹스인 
-@mixin center-align($direction: row) {
-  display: flex;
-  flex-direction: $direction;
-  align-items: center;
-  justify-content: center;
-}

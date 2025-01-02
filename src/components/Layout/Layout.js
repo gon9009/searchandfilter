@@ -2,19 +2,22 @@ import React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router";
+import TextArea from "./TextArea";
 
 function Layout() {
   return (
     <>
       <Header />
-      <main className="main-container">
+      <>
         <Sidebar />
-        <Outlet />
-      </main>
+        <TextArea />
+        <main>
+          {/* EmojiCardList , EmojiCard, Pagination */}
+          <Outlet />
+        </main>
+      </>
     </>
   );
 }
 
 export default Layout;
-
-//

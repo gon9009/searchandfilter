@@ -1,5 +1,5 @@
-const API_KEY = process.env.API_KEY;
-const BASE_URL = process.env.BASE_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 // 모든 이모지를 가져오는 함수
 export async function getAllEmoji() {
@@ -19,7 +19,7 @@ export async function getSidebarData() {
   return response.json();
 }
 
-// 사이드바 그룹별 데이터를 가져오는 함수
+// 이모지 그룹별 데이터를 가져오는 함수
 export async function getEmojisByGroup(group) {
   const response = await fetch(
     `${BASE_URL}/categories/${group}?access_key=${API_KEY}`
