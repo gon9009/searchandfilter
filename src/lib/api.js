@@ -1,42 +1,48 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-// 모든 이모지를 가져오는 함수
+// 1.모든 이모지를 가져오는 함수
 export async function getAllEmoji() {
-  const response = await fetch(`${BASE_URL}/emojis?access_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/emoji`, {
+    method: "GET",
+    headers: {
+      "X-Api-Key": API_KEY, // API 키를 헤더에 포함
+    },
+  });
+
   if (!response.ok) {
     throw new Error("이모지를 불러오지 못했습니다");
   }
   return response.json();
 }
 
-// 사이드바 구조 데이터를 가져오는 함수
-export async function getSidebarData() {
-  const response = await fetch(`${BASE_URL}/categories?access_key=${API_KEY}`);
+// 2.특정 이모지 검색 함수
+export async function getEmojiBySearch(name) {
+  const response = await fetch(`${BASE_URL}/emoji?name=${name}`, {
+    method: "GET",
+    headers: {
+      "X-Api-Key": API_KEY, // API 키를 헤더에 포함
+    },
+  });
+
   if (!response.ok) {
-    throw new Error("이모지를 불러오지 못했습니다");
+    throw new Error("이모지 검색에 실패했습니다");
   }
   return response.json();
 }
 
-// 이모지 그룹별 데이터를 가져오는 함수
+// 3.그룹별 이모지를 가져오는 함수
 export async function getEmojisByGroup(group) {
-  const response = await fetch(
-    `${BASE_URL}/categories/${group}?access_key=${API_KEY}`
-  );
-  if (!response.ok) {
-    throw new Error("이모지를 불러오지 못했습니다");
-  }
-  return response.json();
-}
+  const response = await fetch(`${BASE_URL}?group=${group}`, {
+    method: "GET",
+    headers: {
+      "X-Api-Key": API_KEY,
+    },
+  });
 
-// 이모지를 검색하는 함수
-export async function getEmojiBySearch(query) {
-  const response = await fetch(
-    `${BASE_URL}/emojis?search=${query}&access_key=${API_KEY}`
-  );
   if (!response.ok) {
-    throw new Error("이모지를 불러오지 못했습니다");
+    throw new Error("그룹 데이터를 가져오는 데 실패했습니다");
   }
+
   return response.json();
 }

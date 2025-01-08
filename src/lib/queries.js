@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  getAllEmoji,
-  getSidebarData,
-  getEmojisByGroup,
-  getEmojiBySearch,
-} from "./api";
+
+import { getAllEmoji, getEmojisByGroup, getEmojiBySearch } from "./api"
 
 // 모든 이모지 데이터를 가져오는 훅
 export const useGetAllEmoji = () => {
@@ -14,15 +10,7 @@ export const useGetAllEmoji = () => {
   });
 };
 
-// 사이드바 데이터를 가져오는 훅
-export const useGetSidebarData = () => {
-  return useQuery({
-    queryKey: ["getSidebarData"],
-    queryFn: getSidebarData,
-  });
-};
-
-// 그룹별 이모지 데이터를 가져오는 훅
+// 그룹별 이모지 데이터(사이드바)를 가져오는 훅
 export const useGetEmojisByGroup = (group) => {
   return useQuery({
     queryKey: ["getEmojiByGroup", group],

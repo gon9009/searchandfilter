@@ -1,18 +1,25 @@
 // Sidebar.js
-import { Link } from "react-router-dom";
-import { useGetSidebarData } from "../../lib/queries";
+import { NavLink } from "react-router-dom";
 
-// 사이드바 전체
+// 하드코딩된 이모지 사이드바 구조
+const emojiGroups = [
+  "Smileys_Emotion",
+  "People_Body",
+  "Component",
+  "Animals_Nature",
+  "Food_Drink",
+  "Travel_Places",
+  "Activities",
+  "Objects",
+  "Symbols",
+  "Flags",
+];
+
 const Sidebar = () => {
-  // 사이드바 데이터를 불러오는 함수
-  const { data: sidebarData = [], isLoading, isError } = useGetSidebarData();
-  // 로딩,에러 상태 관리
-  if (isLoading) return <aside className="sidebar">로딩 중...</aside>;
-  if (isError) return <aside className="sidebar">에러 발생</aside>;
-  console.log(sidebarData);
+  // 하드코딩된 사이드바 데이터 사용
   return (
     <aside className="sidebar">
-      <SidebarList categories={sidebarData} />
+      <SidebarList categories={emojiGroups} />
     </aside>
   );
 };
@@ -23,9 +30,9 @@ const SidebarList = ({ categories }) => {
     <ul className="nav-list">
       {categories.map((category) => (
         <SidebarItem
-          key={category.slug}
-          title={category.slug}
-          link={`/categories/${category.slug}`} // 수정사항
+          key={category}
+          title={category.replace("_", " ")}
+          link={`/group/${category}`} // 그룹 이름을 그대로 URL로 사용
         />
       ))}
     </ul>
@@ -36,9 +43,14 @@ const SidebarList = ({ categories }) => {
 const SidebarItem = ({ title, link }) => {
   return (
     <li className="nav-item">
-      <Link to={link} className="nav-link" aria-label={title}>
+      <NavLink
+        to={link}
+        className="nav-link"
+        activeClassName="active"
+        aria-label={title}
+      >
         <span>{title}</span>
-      </Link>
+      </NavLink>
     </li>
   );
 };
