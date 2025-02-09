@@ -1,0 +1,30 @@
+@use "../global/variables";
+
+.sidebar {
+  background: white;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+
+  &__menu {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__item {
+    padding: 0.75rem 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      background: variables.$color-background// 기본 색상 설정;
+    }
+
+    // 활성화 됐을때
+    &.active {
+      border-bottom: 2px solid variables.$color-button-copy;
+      font-weight: bold;
+    }
+  }
+}

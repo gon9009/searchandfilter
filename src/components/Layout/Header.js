@@ -1,29 +1,22 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import logo from "../../assets/logo.png";
+import { SearchIcon } from "../common/Icons";
 
 const Header = () => {
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (query.trim()) {
-      navigate(`/search?query=${query.trim()}`);
-    }
-  };
-
   return (
-    <header>
-      <div className="wrapper">
-        <Link to={"/"}>emojihub</Link>
-        <div className="인풋">
+    <header className="header">
+      <div className="header__wrapper">
+        <a className="header__logo" href="/">
+          <img src={logo} alt="" />
+        </a>
+        {/* 인풋과 서치 아이콘을 하나의 래퍼로 감싸고 포지션닝 사용 */}
+        <div className="header__search__wrapper">
           <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="이모지를 검색하세용 "
+            placeholder="이모지를 검색하세요 !"
+            className="header__search"
+            type="search"
           />
+          <SearchIcon />
         </div>
       </div>
     </header>

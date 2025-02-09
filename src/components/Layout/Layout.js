@@ -2,18 +2,19 @@ import React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router";
-import TextArea from "./TextArea";
+import CopyAndPaste from "./CopyAndPaste";
 
 function Layout() {
   return (
     <>
       <Header />
       <>
-        <Sidebar />
-        <TextArea />
-        <main>
-          {/* EmojiCardList , EmojiCard, Pagination */}
-          <Outlet />
+        <main class="container">
+          <Sidebar />
+          <div className="main-wrapper">
+            <CopyAndPaste />
+            <Outlet />
+          </div>
         </main>
       </>
     </>

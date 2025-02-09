@@ -1,8 +1,9 @@
 import React from "react";
-// 카테고리
+import { useLocation } from "react-router";
 
-function Group() {
-  return <div>카테고리 페이지 입니다</div>;
-}
+const Group = () => {
+  const { pathname } = useLocation();
+  return <div>{pathname} 페이지 입니다</div>;
+};
 
 export default Group;

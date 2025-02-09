@@ -1,8 +1,8 @@
 import React from 'react'
-
-function Search() {
+// 검색 페이지 입니다 
+const Search = () => {
   return (
-    <div>Search 페이지 입니다</div>
+    <div>Search</div>
   )
 }
 

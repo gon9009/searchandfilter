@@ -1,0 +1,42 @@
+@use "../global/variables";
+
+.header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  &__wrapper {
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: auto;
+  }
+  &__logo {
+    max-width: 150px;
+  }
+  &__search__wrapper {
+    position: relative;
+  }
+  &__search {
+    border: 1px solid variables.$color-border;
+
+    font-size: 0.8rem;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    width: 30%;
+    min-width: 250px;
+    outline: none;
+  }
+  &__search__wrapper svg {
+    position: absolute; // 부모(header__search__wrapper)를 기준으로 배치
+    right: 1rem; // 오른쪽 여백
+    top: 50%; // 수직 중앙
+    transform: translateY(-50%); // 정확한 중앙 정렬
+    fill: #999; // 아이콘 색상
+    pointer-events: none; // 클릭 방지 (인풋 포커스에 방해 X)
+    transition: fill 0.2s ease;
+  }
+}
