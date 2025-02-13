@@ -1,16 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-
-import { getAllEmoji, getEmojisByGroup, getEmojiBySearch } from "./api"
+import {
+  getAllEmoji,
+  getEmojisByGroup,
+  getEmojiBySearch,
+  getSidebarData,
+} from "./api";
 
 // 모든 이모지 데이터를 가져오는 훅
-export const useGetAllEmoji = () => {
+export const useGetAllEmoji = (options) => {
+  // options 파라미터 추가
   return useQuery({
     queryKey: ["getAllEmoji"],
     queryFn: getAllEmoji,
+    ...options,
   });
 };
 
-// 그룹별 이모지 데이터(사이드바)를 가져오는 훅
+// 그룹별 이모지 데이터를 가져오는 훅
 export const useGetEmojisByGroup = (group) => {
   return useQuery({
     queryKey: ["getEmojiByGroup", group],
@@ -23,5 +29,13 @@ export const useGetEmojiBySearch = (searchValue) => {
   return useQuery({
     queryKey: ["searchEmoji", searchValue],
     queryFn: () => getEmojiBySearch(searchValue),
+  });
+};
+
+// 사이드바 데이터를 가져오는 훅
+export const useGetSidebarData = () => {
+  return useQuery({
+    queryKey: ["getSidebarData"],
+    queryFn: getSidebarData,
   });
 };

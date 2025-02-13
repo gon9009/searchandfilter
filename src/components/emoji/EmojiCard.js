@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { EmojiHeartIcon } from "../common/Icons";
 
-const EmojiCard = () => {
+const EmojiCard = ({ emojiIcon }) => {
   return (
-    <div>EmojiCard</div>
-  )
-}
+    <div className="emoji-card">
+      <p className="emoji">{emojiIcon}</p>
+      <EmojiHeartIcon />
+    </div>
 
-export default EmojiCard
+    // 아이콘 -> Svg로 취급
+  );
+};
+
+export default EmojiCard;

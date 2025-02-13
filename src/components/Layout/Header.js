@@ -7,7 +7,7 @@ const Header = () => {
     <header className="header">
       <div className="header__wrapper">
         <a className="header__logo" href="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </a>
         {/* 인풋과 서치 아이콘을 하나의 래퍼로 감싸고 포지션닝 사용 */}
         <div className="header__search__wrapper">

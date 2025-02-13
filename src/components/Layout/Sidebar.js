@@ -1,26 +1,20 @@
 // Sidebar.js
 import { NavLink } from "react-router-dom";
-
-// 하드코딩된 이모지 사이드바 구조
-const sidebarGroup = [
-  { name: "Smileys & Emotion", route: "/group/smileys_emotion" },
-  { name: "People & Body", route: "/group/people_body" },
-  { name: "Component", route: "/group/component" },
-  { name: "Animals & Nature", route: "/group/animals_nature" },
-  { name: "Food & Drink", route: "/group/food_drink" },
-  { name: "Travel & Places", route: "/group/travel_places" },
-  { name: "Activities", route: "/group/activities" },
-  { name: "Objects", route: "/group/objects" },
-  { name: "Symbols", route: "/group/symbols" },
-  { name: "Flags", route: "/group/flags" },
-  { name: "Liked", route: "/liked" },
-];
+import { useGetSidebarData } from "../../lib/queries";
+import { formatTitle } from "../../utils/utils";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 const Sidebar = () => {
-  // 하드코딩된 사이드바 데이터 사용
+  const { data: sidebarData, isLoading } = useGetSidebarData();
+
+  console.log(sidebarData);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <aside className="sidebar">
-      <SidebarList categories={sidebarGroup} />
+      <SidebarList categories={sidebarData} />
     </aside>
   );
 };
@@ -32,29 +26,31 @@ const SidebarList = ({ categories }) => {
       <ul className="sidebar__menu">
         {categories.map((category) => (
           <SidebarItem
-            key={category.name}
-            title={category.name}
-            link={`${category.route}`} // 그룹 이름을 그대로 URL로 사용
+            key={category.slug}
+            title={category.slug}
+            link={`${category.slug}`} // 그룹 이름을 그대로 URL로 사용
           />
         ))}
+        {/* Liked 메뉴 추가 */}
+        <SidebarItem key="liked" title="Liked" link="/liked" />
       </ul>
     </nav>
   );
 };
 
-// 개별 사이드바 아이템 , 클릭시 이동시킨다
+// 개별 사이드바 아이템 , 클릭시 라우트 이동
+// URL 과 to = {link} 값이 같으면 isActive 가 true 가 됨
 const SidebarItem = ({ title, link }) => {
   return (
     <li className="sidebar__item">
       <NavLink
         to={link}
         aria-label={title}
-        // isActive 로 현재 경로와 to 값을 비교
         className={
           ({ isActive }) => `sidebar__item ${isActive ? "active" : ""}` // 활성화 상태에 따라 스타일 적용
         }
       >
-        <span>{title}</span>
+        <span>{formatTitle(title)}</span>
       </NavLink>
     </li>
   );

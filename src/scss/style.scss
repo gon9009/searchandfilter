@@ -1,5 +1,10 @@
-// 엔트리 포인트
-@use "global";
-@use "components";
-@use "util";
-@use "layout";
+@use "global"; // 전역 스타일
+@use "components"; // 컴포넌트 스타일
+@use "layout"; // 레이아웃 스타일
+@use "util"; // 유틸리티 스타일
+
+// 전역 스타일 변수
+:root {
+  --transition: all 0.3s ease-in-out;
+}
+

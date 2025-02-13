@@ -1,0 +1,38 @@
+@use "..//global/variables" as v;
+
+.emoji-cards-container {
+  display: grid;
+  /* 트랙의 갯수, 트랙별 너비  */
+  /* 기본적으로 트랙의 갯수는 10 x 5 에서  */
+  /* 화면이 줄어들수록 트랙이 줄어든다  */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 유연한 열 */
+  gap: 0.75rem;
+  justify-content: center;
+  /* 개별 이모지 카드  */
+  .emoji-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    // 하트 아이콘
+    svg {
+      position: absolute;
+      color: v.$color-border;
+      font-size: 1.1rem;
+      right: 5px;
+      bottom: 3px;
+    }
+  }
+  .emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+}

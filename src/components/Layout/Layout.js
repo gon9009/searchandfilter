@@ -9,7 +9,7 @@ function Layout() {
     <>
       <Header />
       <>
-        <main class="container">
+        <main className="container">
           <Sidebar />
           <div className="main-wrapper">
             <CopyAndPaste />

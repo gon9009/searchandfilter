@@ -22,13 +22,13 @@
   }
   &__search {
     border: 1px solid variables.$color-border;
-
     font-size: 0.8rem;
     border-radius: 2rem;
     padding: 0.5rem 1rem;
     width: 30%;
     min-width: 250px;
     outline: none;
+    background: variables.$color-background;
   }
   &__search__wrapper svg {
     position: absolute; // 부모(header__search__wrapper)를 기준으로 배치

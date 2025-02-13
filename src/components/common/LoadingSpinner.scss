@@ -1,0 +1,33 @@
+@use "../../scss/global/variables" as *;
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+
+  .spinner {
+    animation: rotate 1.5s linear infinite;
+
+    &-emoji {
+      font-size: 2rem;
+      display: inline-block;
+    }
+  }
+
+  .spinner-text {
+    margin-top: 1rem;
+    color: $color-text-primary;
+    font-size: 1rem;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

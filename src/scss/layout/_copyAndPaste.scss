@@ -1,0 +1,28 @@
+textarea {
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 150px;
+    padding: 0.5rem;
+    border: 2px solid #eee;
+    font-size: 1rem;
+    transition: var(--transition);
+  }
+  
+  textarea::placeholder {
+    color: var(--color-text-primary);
+    opacity: 0.3; /* 예시: 투명도 60% */
+  }
+  
+  textarea:focus {
+    outline: none;
+  }
+  
+  .copy-paste .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
