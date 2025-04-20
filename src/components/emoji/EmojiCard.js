@@ -8,7 +8,6 @@ const EmojiCard = ({ emojiIcon }) => {
       <EmojiHeartIcon />
     </div>
 
-    // 아이콘 -> Svg로 취급
   );
 };
 

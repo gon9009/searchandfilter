@@ -1,6 +1,5 @@
 import React from "react";
 import EmojiCard from "./EmojiCard";
-import Pagination from "./Pagination";
 
 const EmojiCardList = ({ emojis }) => {
   return (
@@ -12,8 +11,6 @@ const EmojiCardList = ({ emojis }) => {
             return <EmojiCard key={emoji.slug} emojiIcon={emoji.character} />;
           })}
         </div>
-
-        <Pagination emojis={emojis} />
       </div>
     </section>
   );
