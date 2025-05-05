@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router";
-import CopyAndPaste from "./CopyAndPaste";
+import ClipboardPanel from "./ClipboardPanel";
 
 function Layout() {
   return (
@@ -12,7 +12,7 @@ function Layout() {
         <main className="container">
           <Sidebar />
           <div className="main-wrapper">
-            <CopyAndPaste />
+            <ClipboardPanel />
             <Outlet />
           </div>
         </main>

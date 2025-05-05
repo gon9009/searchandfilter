@@ -5,13 +5,15 @@ import { usePagination } from "../../hooks/usePagination";
 const Pagination = ({ itemCount, currentPage, handlePageChange }) => {
   const { totalPage, hasNext, hasPrev } = usePagination(itemCount);
 
-  // hasPrev 가 F 가 되어야 disabled 가 T 가 되고
-  // hasNext 가 F 가 되어야 disabled 가 T 가 되고
+  // 마지막 페이지이면 disabled 시켜야한다 
+  // 즉 hasNextPAge T -> disable T 
+  // 다음페이지가 있어 ? -> 그럼 Disable F 
+  // 다음페이지가 없어 ? -> 그럼 Disable T 
   return (
     <div className="pagination">
       <button
         disabled={!hasPrev}
-        onClick={handlePageChange}
+        onClick={() => handlePageChange(currentPage - 1)}
         className="btn btn-prev"
       >
         <PaginationArrowLeft />
@@ -21,9 +23,10 @@ const Pagination = ({ itemCount, currentPage, handlePageChange }) => {
         <span className="pagination-info__separator">/</span>
         <span className="pagination-info__total">{totalPage}</span>
       </div>
+    
       <button
         disabled={!hasNext}
-        onClick={handlePageChange}
+        onClick={() => handlePageChange(currentPage + 1)}
         className="btn btn-next"
       >
         <PaginationArrowRight />

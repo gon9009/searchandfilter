@@ -1,5 +1,4 @@
 const API_KEY = process.env.REACT_APP_API_KEY;
-const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 // 1.모든 이모지를 가져오는 함수
 export async function getAllEmoji() {
@@ -15,6 +14,7 @@ export async function getAllEmoji() {
   }
   return response.json();
 }
+
 // 2.특정 이모지 검색 함수
 export async function getEmojiBySearch(name) {
   const response = await fetch(
@@ -30,7 +30,7 @@ export async function getEmojiBySearch(name) {
   return response.json();
 }
 
-// 3.그룹별 이모지를 가져오는 함수 -- 카테고리별 이모지를 가져오는 함수
+// 3.카테고리별 이모지를 가져오는 함수
 export async function getEmojisByGroup(group) {
   const response = await fetch(
     ` https://emoji-api.com/categories/${group}?access_key=${API_KEY}`,

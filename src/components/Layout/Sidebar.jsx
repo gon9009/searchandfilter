@@ -5,9 +5,8 @@ import { formatTitle } from "../../utils/utils";
 import LoadingSpinner from "../common/LoadingSpinner";
 
 const Sidebar = () => {
+  // 사이드바 데이터 불러오기
   const { data: sidebarData, isLoading } = useGetSidebarData();
-
-  console.log(sidebarData);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -24,13 +23,15 @@ const SidebarList = ({ categories }) => {
   return (
     <nav className="sidebar__nav">
       <ul className="sidebar__menu">
-        {categories.map((category) => (
-          <SidebarItem
-            key={category.slug}
-            title={category.slug}
-            link={`${category.slug}`} // 그룹 이름을 그대로 URL로 사용
-          />
-        ))}
+        {categories
+          .filter((category) => category.slug !== "component") // ❌ 제외
+          .map((category) => (
+            <SidebarItem
+              key={category.slug}
+              title={category.slug}
+              link={`/group/${category.slug}`} // ✅ 슬래시 꼭 붙이기!!
+            />
+          ))}
         {/* Liked 메뉴 추가 */}
         <SidebarItem key="liked" title="Liked" link="/liked" />
       </ul>

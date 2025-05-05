@@ -8,7 +8,13 @@ const EmojiCardList = ({ emojis }) => {
       <div className="section-wrapper">
         <div className="emoji-cards-container">
           {emojis.map((emoji) => {
-            return <EmojiCard key={emoji.slug} emojiIcon={emoji.character} />;
+            return (
+              <EmojiCard
+                key={emoji.slug}
+                emojicode={emoji.codePoint}
+                emojiIcon={emoji.character}
+              />
+            );
           })}
         </div>
       </div>
