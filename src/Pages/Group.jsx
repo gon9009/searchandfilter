@@ -5,6 +5,9 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const Group = () => {
   const { slug } = useParams();
+  // ✅ 핵심 해결책: slug 값이 유효한지 체크
+  // slug 값이 아직 없거나 (undefined) 빈 객체 {} 에서 추출된 경우 패칭 훅을 호출하지 않음
+
   const {
     data: groupEmojis = [],
     isLoading,
