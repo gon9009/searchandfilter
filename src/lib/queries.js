@@ -29,7 +29,7 @@ export const useGetEmojiBySearch = (searchValue) => {
   return useQuery({
     queryKey: ["searchEmoji", searchValue],
     queryFn: () => getEmojiBySearch(searchValue),
-    enabled: !!searchValue // 빈 검색어는 패칭 X 
+    // True 일때 실행
   });
 };
 

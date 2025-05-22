@@ -9,27 +9,38 @@ import { useDebounce } from "../../hooks/useDebounce";
 
 const Header = () => {
   const [query, setQuery] = useState("");
-  const [setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const debounecedQuery = useDebounce(query, 500);
+  const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
-    // 검색어가 비었을 경우 쿼리 (search) 비우기
-    if (!debounecedQuery.trim()) {
+    if (location.pathname !== "/search") {
+      setQuery("");
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // 검색어가 비어있을 경우 , 쿼리스트링 비우기
+    if (!debouncedQuery.trim()) {
       if (location.pathname === "/search") {
         setSearchParams({}, { replace: true });
       }
       return;
     }
 
-    // 디바운싱 성공후
+    // debouncedQuery 가 변경 -> 페이지 이동
     if (location.pathname !== "/search") {
-      navigate(`/search?search=${encodeURIComponent(debounecedQuery)}`);
+      navigate(`/search?search=${encodeURIComponent(debouncedQuery)}`);
     } else {
-      setSearchParams({ search: debounecedQuery }, { replace: true });
+      setSearchParams({ search: debouncedQuery }, { replace: true });
     }
-  }, [debounecedQuery, navigate, location.pathname, setSearchParams]);
+  }, [debouncedQuery]);
+
+  // 로고 클리시 쿼리도 초기화
+  const handleLogo = () => {
+    setQuery("");
+  };
 
   // 핸들러
   const handleSearch = (e) => {
@@ -39,7 +50,12 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__wrapper">
-        <Link to="/" className="heaer__logo" aria-label="home">
+        <Link
+          to="/"
+          onClick={handleLogo}
+          className="header__logo"
+          aria-label="home"
+        >
           <img src={logo} alt="logo" />
         </Link>
         <div className="header__search__wrapper">

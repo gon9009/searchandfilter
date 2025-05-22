@@ -4,6 +4,7 @@ import { create } from "zustand";
 export const useClipboardStore = create((set, get) => ({
   copiedText: "",
   // 이모지를 누적 추가하기
+  setCopiedText:(text) => set({copiedText:text}),
   appendEmoji: (emoji) => {
     const prev = get().copiedText;
     set({ copiedText: prev + emoji });

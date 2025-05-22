@@ -7,7 +7,6 @@ export const useCurrentPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // 쿼리스트링을 읽어온다 page 가 null 이면 1 반환
-  // 문자열 -> 정수로 변환 (페ㅣ지 번호를 위해해)
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const handlePageChange = (page) => {

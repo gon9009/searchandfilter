@@ -18,7 +18,9 @@ export async function getAllEmoji() {
 // 2.특정 이모지 검색 함수
 export async function getEmojiBySearch(name) {
   const response = await fetch(
-    `https://emoji-api.com/emojis?search=${name}&access_key=${API_KEY}`,
+    `https://emoji-api.com/emojis?search=${encodeURIComponent(
+      name
+    )}&access_key=${API_KEY}`,
     {
       method: "GET",
     }
@@ -27,7 +29,14 @@ export async function getEmojiBySearch(name) {
   if (!response.ok) {
     throw new Error("이모지 검색에 실패했습니다");
   }
-  return response.json();
+
+  const data = await response.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error(data?.message || "검색결과 없음 ");
+  }
+
+  return data;
 }
 
 // 3.카테고리별 이모지를 가져오는 함수
