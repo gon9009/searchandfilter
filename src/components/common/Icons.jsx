@@ -3,8 +3,10 @@ import { BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa6";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { IoMdMenu } from "react-icons/io";
+import { FiAlertCircle } from "react-icons/fi";
 
 export {
+  FiAlertCircle as EmptyStateIndicator,
   GoHeartFill as SideBarHeartIcon,
   BiRightArrowAlt as PaginationArrowRight,
   BiLeftArrowAlt as PaginationArrowLeft,

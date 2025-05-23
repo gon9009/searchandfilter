@@ -11,6 +11,7 @@ const EmojiCard = ({ emojicode, emojiIcon }) => {
   return (
     <div className="emoji-card" onClick={() => appendEmoji(emojiIcon)}>
       <p className="emoji">{emojiIcon}</p>
+      {/* 좋아요 ❤️*/}
       <span
         onClick={(e) => {
           e.stopPropagation(); // ✅ 카드 클릭 이벤트로 전달 방지

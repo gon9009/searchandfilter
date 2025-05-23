@@ -1,25 +1,23 @@
-import React from "react";
 import EmojiCard from "./EmojiCard";
+import EmptyState from "../common/EmptyState";
 
-const EmojiCardList = ({ emojis }) => {
+const EmojiCardList = ({ emojis, emptyMessage }) => {
   return (
-    // 각 컴포넌트별 "필요한 데이터 만 전달"
     <section className="emoji-cards">
-      <div className="section-wrapper">
-        <div className="emoji-cards-container">
-          {emojis.map((emoji) => {
-            return (
-              <EmojiCard
-                key={emoji.slug}
-                emojicode={emoji.codePoint}
-                emojiIcon={emoji.character}
-              />
-            );
-          })}
+      {emojis.length === 0 ? (
+        <EmptyState message={emptyMessage} />
+      ) : (
+        <div className="emoji-cards__container">
+          {emojis.map((emoji) => (
+            <EmojiCard
+              key={emoji.slug}
+              emojicode={emoji.codePoint}
+              emojiIcon={emoji.character}
+            />
+          ))}
         </div>
-      </div>
+      )}
     </section>
   );
 };
-
 export default EmojiCardList;

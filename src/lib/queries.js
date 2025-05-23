@@ -29,6 +29,7 @@ export const useGetEmojiBySearch = (searchValue) => {
   return useQuery({
     queryKey: ["searchEmoji", searchValue],
     queryFn: () => getEmojiBySearch(searchValue),
+    refetchOnWindowFocus: false, // ✅ 탭 복귀 시 refetch 방지
     // True 일때 실행
   });
 };

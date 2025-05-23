@@ -16,7 +16,13 @@ const Liked = () => {
   if (isLoading) return <LoadingSpinner />;
   if (error) return <div>에러가 발생했습니다: {error.message}</div>;
 
-  return <EmojiPageLayout data={filteredEmojis} isLoading={isLoading} />;
+  return (
+    <EmojiPageLayout
+      emptyMessage="좋아요한 이모지가 없습니다🥺"
+      data={filteredEmojis}
+      isLoading={isLoading}
+    />
+  );
 };
 
 export default Liked;

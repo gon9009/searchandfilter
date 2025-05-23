@@ -27,13 +27,15 @@ const Search = () => {
     return <LoadingSpinner />;
   }
 
-  if (error) {
-    return <div>검색 결과가 없습니다</div>;
-  }
 
   return (
     <>
-      <EmojiPageLayout data={searchedEmojis} isLoading={isLoading} />
+      <EmojiPageLayout
+        emptyMessage="검색 결과가 없습니다 😭"
+        data={searchedEmojis}
+        isLoading={isLoading}
+        error={error}
+      />
     </>
   );
 };

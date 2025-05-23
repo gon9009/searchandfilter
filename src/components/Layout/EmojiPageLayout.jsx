@@ -5,7 +5,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import { useCurrentPage } from "../../hooks/useCurrentPage";
 import { paginateData } from "../../utils/utils";
 
-const EmojiPageLayout = ({ data, isLoading }) => {
+const EmojiPageLayout = ({ data, isLoading, emptyMessage, error }) => {
   const { currentPage, handlePageChange } = useCurrentPage();
 
   const paginatedData = useMemo(() => {
@@ -15,14 +15,18 @@ const EmojiPageLayout = ({ data, isLoading }) => {
 
   if (isLoading) return <LoadingSpinner />;
 
+  const hasData = Array.isArray(data) && data.length > 0;
+
   return (
     <>
-      <EmojiCardList emojis={paginatedData} />
-      <Pagination
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-        itemCount={data?.length || 0}
-      />
+      <EmojiCardList emptyMessage={emptyMessage} emojis={paginatedData} />
+      {!error && hasData && (
+        <Pagination
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+          itemCount={data.length}
+        />
+      )}
     </>
   );
 };

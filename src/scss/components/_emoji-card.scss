@@ -1,16 +1,30 @@
 @use "..//global/variables" as v;
 
-.emoji-cards-container {
-  display: grid;
-  /* 트랙의 갯수, 트랙별 너비  */
-  /* 기본적으로 트랙의 갯수는 10 x 5 에서  */
-  /* 화면이 줄어들수록 트랙이 줄어든다  */
-  grid-template-columns: repeat(10, 1fr); // ← 항상 10칸 고정!
-  gap: 0.75rem;
-  justify-content: center;
+.emoji-cards {
+  min-height: 400px; // ✅ 최소 높이 고정 (카드가 없을 때를 위한 공간 확보)
+  // 이모지 카드 컨테이너
+  &__container {
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(10, 1fr); // ← 항상 10칸 고정!
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  &__empty {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-message {
+      font-size: 1.6rem;
+      color: v.$color-border;
+    }
+  }
   /* 개별 이모지 카드  */
   .emoji-card {
     background: white;
+
     padding: 1rem;
     border-radius: 0.5rem;
     text-align: center;
