@@ -5,11 +5,13 @@
   // 이모지 카드 컨테이너
   &__container {
     display: grid;
-    align-items: start;
-    grid-template-columns: repeat(10, 1fr); // ← 항상 10칸 고정!
     gap: 0.75rem;
-    justify-content: center;
+    width: 100%;
+    min-width: 0; /* 부모 그리드에 맞춰 축소 */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    justify-items: center;
   }
+
   &__empty {
     width: 100%;
     min-height: 400px;

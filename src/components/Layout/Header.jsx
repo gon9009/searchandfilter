@@ -13,6 +13,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const debouncedQuery = useDebounce(query, 500);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (location.pathname !== "/search") {
@@ -62,7 +63,7 @@ const Header = () => {
           <input
             placeholder="이모지를 검색하세요 !"
             className="header__search"
-            type="search"
+            type="text"
             onChange={handleSearch}
             value={query}
           />
