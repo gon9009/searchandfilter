@@ -5,6 +5,8 @@
   padding: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   border-radius: 0.5rem;
+  height: calc(100vh - 10rem); // 헤더 높이 제외
+  position: sticky;
 
   &__menu {
     text-align: center;

@@ -13,7 +13,6 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const debouncedQuery = useDebounce(query, 500);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (location.pathname !== "/search") {
