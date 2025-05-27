@@ -6,8 +6,9 @@ import { useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDebounce } from "../../hooks/useDebounce";
+import { MobileMenuIcon } from "../common/Icons";
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
   const [query, setQuery] = useState("");
   const [, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -50,6 +51,13 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__wrapper">
+        <button
+          className="header__menu-button"
+          onClick={onMenuClick}
+          aria-label="menu"
+        >
+          <MobileMenuIcon />
+        </button>
         <Link
           to="/"
           onClick={handleLogo}

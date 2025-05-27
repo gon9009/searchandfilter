@@ -6,6 +6,18 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  .header__menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .header__menu-button {
+      display: block;
+    }
+  }
   &__wrapper {
     max-width: 800px;
     display: flex;

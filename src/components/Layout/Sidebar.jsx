@@ -1,10 +1,10 @@
-// Sidebar.js
 import { NavLink } from "react-router-dom";
 import { useGetSidebarData } from "../../lib/queries";
 import { formatTitle } from "../../utils/utils";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { MobileCloseIcon } from "../common/Icons";
 
-const Sidebar = () => {
+const Sidebar = ({ isMobile, isMobileOpen, onClose }) => {
   // 사이드바 데이터 불러오기
   const { data: sidebarData, isLoading } = useGetSidebarData();
 
@@ -12,7 +12,17 @@ const Sidebar = () => {
     return <LoadingSpinner />;
   }
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isMobileOpen ? "sidebar--open" : ""}`}>
+      {/* 모바일 드로어 상단에 닫기 버튼 */}
+      {isMobile && (
+        <button
+          className="sidebar__close"
+          onClick={onClose}
+          aria-label="Close menu"
+        >
+          <MobileCloseIcon />
+        </button>
+      )}
       <SidebarList categories={sidebarData} />
     </aside>
   );

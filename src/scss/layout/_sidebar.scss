@@ -8,6 +8,34 @@
   height: calc(100vh - 10rem); // 헤더 높이 제외
   position: sticky;
 
+  // close 버튼 기본적으로 숨김
+  .sidebar__close {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%); // 숨긴 상태
+    z-index: 200;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+
+    &.sidebar--open {
+      transform: translateX(0); // 열림
+    }
+
+    .sidebar__close {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      margin: 1rem;
+      cursor: pointer;
+    }
+  }
   &__menu {
     text-align: center;
     display: flex;
@@ -27,6 +55,77 @@
     &.active {
       border-bottom: 2px solid variables.$color-button-copy;
       font-weight: bold;
+    }
+  }
+}
+
+/* backdrop 스타일  */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+// 모바일 전용 사이드바
+.mobile-sidebar {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 1.5rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    &__close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &__menu {
+      margin-top: 3rem;
+      .sidebar__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .sidebar__item {
+        padding: 1rem;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+          background: #f5f5f5;
+        }
+
+        &.active {
+          font-weight: bold;
+          border-bottom: 2px solid variables.$color-button-copy;
+        }
+      }
     }
   }
 }
