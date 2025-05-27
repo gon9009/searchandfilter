@@ -36,7 +36,7 @@ const Header = ({ onMenuClick }) => {
     } else {
       setSearchParams({ search: debouncedQuery }, { replace: true });
     }
-  }, [debouncedQuery]);
+  }, [debouncedQuery, location.pathname, setSearchParams, navigate]);
 
   // 로고 클리시 쿼리도 초기화
   const handleLogo = () => {
