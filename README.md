@@ -1,3 +1,5 @@
+
+
 ## 프로젝트 소개
 
 **EmojiHub는 원하는 이모지를 쉽고 빠르게 찾고, 모아두고, 복사할 수 있는 웹 애플리케이션입니다.**  
@@ -8,12 +10,12 @@
 
 ```
 1인
-6/22 - 8/21
+12/22 - 1/21
 ```
 
 ## 배포 URL
 
-https://emoji-hub.vercel.app
+emojihubproject.netlify.app
 
 ## 기능
 
