@@ -35,5 +35,4 @@ https://emoji-hub.vercel.app
 - React Query (데이터 패칭 및 캐싱)
 - React Router v6
 - SCSS (컴포넌트 기반 스타일링, 반응형 설계)
-- emoji-api.com (외부 이모지 API)
-```
+\```
