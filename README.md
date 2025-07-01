@@ -1,7 +1,3 @@
-# EmojiHub
-
-![](docs/EmojiHubLogo.png)
-
 ## 프로젝트 소개
 
 **EmojiHub는 원하는 이모지를 쉽고 빠르게 찾고, 모아두고, 복사할 수 있는 웹 애플리케이션입니다.**  
@@ -17,7 +13,7 @@
 
 ## 배포 URL
 
-[Emoji Hub 바로가기](https://emoji-hub.vercel.app)
+https://emoji-hub.vercel.app
 
 ## 기능
 
@@ -39,7 +35,6 @@
 - React Query (데이터 패칭 및 캐싱)
 - React Router v6
 - SCSS (컴포넌트 기반 스타일링, 반응형 설계)
-- emoji-api.com (외부 이모지 API)
 ```
 
 #### React 18
