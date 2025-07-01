@@ -133,9 +133,9 @@ searchandfilter/
 
 ## UI
 
-|           데스크탑            |              모바일              |
-| :---------------------------: | :------------------------------: |
-| ![](docs/EmojiHubDesktop.png) | ![](docs/EmojihubMobile.png.png) |
+|           데스크탑            |            모바일            |
+| :---------------------------: | :--------------------------: |
+| ![](docs/EmojiHubDesktop.png) | ![](docs/EmojihubMobile.png) |
 
 ![검색 시연](/docs/Emojihub%20검색.gif)
 ![사이드바](/docs/Emojihub%20사이드바.gif)
