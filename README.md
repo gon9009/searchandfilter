@@ -1,4 +1,4 @@
-# emojihub 
+# emojihub
 
 ![](docs/EmojiHubLogo.png)
 
@@ -133,8 +133,10 @@ searchandfilter/
 
 ## UI
 
-![데스크탑](/docs/EmojiHubDesktop.png)
-![모바일](/docs/EmojihubMobile.png)
+|           데스크탑            |              모바일              |
+| :---------------------------: | :------------------------------: |
+| ![](docs/EmojiHubDesktop.png) | ![](docs/EmojihubMobile.png.png) |
+
 ![검색 시연](/docs/Emojihub%20검색.gif)
 ![사이드바](/docs/Emojihub%20사이드바.gif)
 ![좋아요](/docs/Emojihub%20좋아요.gif)
