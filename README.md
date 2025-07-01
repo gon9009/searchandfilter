@@ -1,3 +1,7 @@
+# emojihub 
+
+![](docs/EmojiHubLogo.png)
+
 ## 프로젝트 소개
 
 **EmojiHub는 원하는 이모지를 쉽고 빠르게 찾고, 모아두고, 복사할 수 있는 웹 애플리케이션입니다.**  
