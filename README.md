@@ -17,7 +17,7 @@
 
 ## 배포 URL
 
-https://emoji-hub.vercel.app
+emojihubproject.netlify.app
 
 ## 기능
 
