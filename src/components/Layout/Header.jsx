@@ -10,7 +10,7 @@ import { MobileMenuIcon } from "../common/Icons";
 
 const Header = ({ onMenuClick }) => {
   const [query, setQuery] = useState("");
-  const [, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
   const debouncedQuery = useDebounce(query, 500);
@@ -22,21 +22,34 @@ const Header = ({ onMenuClick }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    // 검색어가 비어있을 경우 , 쿼리스트링 비우기
-    if (!debouncedQuery.trim()) {
+    const trimmedQuery = debouncedQuery.trim();
+    
+    // 현재 URL의 검색어와 비교하여, 변경이 없으면 아무것도 하지 않음 (불필요한 동작 방지)
+    const currentSearch = searchParams.get('search');
+    if (trimmedQuery === currentSearch) {
+      return;
+    }
+
+    // 검색어가 비어있을 경우, 모든 쿼리 파라미터를 지웁니다.
+    if (!trimmedQuery) {
       if (location.pathname === "/search") {
         setSearchParams({}, { replace: true });
       }
       return;
     }
 
-    // debouncedQuery 가 변경 -> 페이지 이동
+    // 현재 페이지가 /search가 아닐 때 검색하면, search 페이지로 이동합니다.
     if (location.pathname !== "/search") {
-      navigate(`/search?search=${encodeURIComponent(debouncedQuery)}`);
+      navigate(`/search?search=${encodeURIComponent(trimmedQuery)}`);
     } else {
-      setSearchParams({ search: debouncedQuery }, { replace: true });
+      // /search 페이지에서 새로운 검색을 하면,
+      // page 파라미터는 삭제하고(1페이지로 리셋) search 파라미터만 새로 설정합니다.
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set("search", trimmedQuery);
+      newSearchParams.delete("page");
+      setSearchParams(newSearchParams, { replace: true });
     }
-  }, [debouncedQuery, location.pathname, setSearchParams, navigate]);
+  }, [debouncedQuery, location.pathname, navigate, searchParams, setSearchParams]);
 
   // 로고 클리시 쿼리도 초기화
   const handleLogo = () => {

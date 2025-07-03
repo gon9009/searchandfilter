@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import EmojiCardList from "../emoji/EmojiCardList";
 import Pagination from "../emoji/Pagination";
 import LoadingSpinner from "../common/LoadingSpinner";

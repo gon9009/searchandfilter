@@ -17,6 +17,8 @@ const Search = () => {
     error,
   } = useGetEmojiBySearch(searchTerm);
 
+  console.log(searchTerm);
+
   useEffect(() => {
     if (!searchTerm.trim()) {
       navigate("/");
@@ -26,7 +28,6 @@ const Search = () => {
   if (isLoading) {
     return <LoadingSpinner />;
   }
-
 
   return (
     <>
