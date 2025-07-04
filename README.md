@@ -17,7 +17,7 @@
 
 ## 배포 URL
 
-emojihubproject.netlify.app
+ [emojihubproject.netlify.app](emojihubproject.netlify.app)
 
 ## 기능
 
