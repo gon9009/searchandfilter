@@ -30,7 +30,7 @@ const Header = ({ onMenuClick }) => {
       return;
     }
 
-    // 검색어가 비어있을 경우, 모든 쿼리 파라미터를 지웁니다.
+    // 검색어가 비어있을 경우, 모든 쿼리 파라미터를 비우기 
     if (!trimmedQuery) {
       if (location.pathname === "/search") {
         setSearchParams({}, { replace: true });
@@ -38,12 +38,10 @@ const Header = ({ onMenuClick }) => {
       return;
     }
 
-    // 현재 페이지가 /search가 아닐 때 검색하면, search 페이지로 이동합니다.
     if (location.pathname !== "/search") {
       navigate(`/search?search=${encodeURIComponent(trimmedQuery)}`);
     } else {
-      // /search 페이지에서 새로운 검색을 하면,
-      // page 파라미터는 삭제하고(1페이지로 리셋) search 파라미터만 새로 설정합니다.
+   
       const newSearchParams = new URLSearchParams(searchParams);
       newSearchParams.set("search", trimmedQuery);
       newSearchParams.delete("page");
